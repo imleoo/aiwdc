@@ -1,84 +1,7 @@
-// Pipeline visualization interactivity
+// Main application functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize connection diagram
     initConnectionDiagram();
-    
-    // Safe Mermaid initialization
-    function initializeMermaid() {
-        if (typeof mermaid !== 'undefined') {
-            mermaid.initialize({
-                startOnLoad: false,
-                theme: 'dark',
-                flowchart: {
-                    useMaxWidth: false,
-                    htmlLabels: true,
-                    curve: 'basis'
-                },
-                securityLevel: 'loose'
-            });
-            return true;
-        }
-        return false;
-    }
-    
-    // Render YAML pipeline as flowchart
-    function renderPipelineFlowchart() {
-        const flowchartContainer = document.getElementById('mermaid-flowchart');
-        if (!flowchartContainer) return;
-        
-        const pipelineConfig = `flowchart TD
-    subgraph Sources[Data Sources]
-        A[RSS Feed\\nTech News]
-        B[Web Scraper\\nNews Sites]
-        C[Database\\nMySQL/PostgreSQL]
-        D[Search Engine\\nGoogle Custom Search]
-    end
-    
-    subgraph AI_Processing[aixsu-processor]
-        E[Unified AI Engine\\nMulti-Model Support]
-    end
-    
-    subgraph Destinations[Content Destinations]
-        I[WordPress\\nBlog Platform]
-        J[Shopify\\nE-commerce]
-        K[Twitter\\nSocial Media]
-        L[Facebook\\nSocial Media]
-        M[LinkedIn\\nProfessional Network]
-    end
-    
-    A --> E
-    B --> E
-    C --> E
-    D --> E
-    E --> I
-    E --> J
-    E --> K
-    E --> L
-    E --> M`;
-        
-        flowchartContainer.innerHTML = pipelineConfig;
-        
-        // Only initialize mermaid if it's available
-        if (typeof mermaid !== 'undefined') {
-            try {
-                mermaid.init(undefined, flowchartContainer);
-            } catch (error) {
-                console.warn('Mermaid rendering failed:', error);
-                showFallbackVisualization();
-            }
-        } else {
-            showFallbackVisualization();
-        }
-    }
-    
-    // Show fallback visualization
-    function showFallbackVisualization() {
-        const mermaidContainer = document.querySelector('.mermaid-container');
-        const builderFlow = document.querySelector('.builder-flow');
-        
-        if (mermaidContainer) mermaidContainer.style.display = 'none';
-        if (builderFlow) builderFlow.style.display = 'flex';
-    }
     
     // Safe element selection with null checks
     function safeQuerySelector(selector) {
@@ -103,80 +26,108 @@ document.addEventListener('DOMContentLoaded', function() {
         const diagram = document.querySelector('.connection-diagram');
         if (!diagram) return;
         
-        // Position connection lines
-        setTimeout(() => {
+        // Position connection lines after layout is complete
+        function positionLines() {
             const sourceBoxes = document.querySelectorAll('.sources-column .connector-box');
             const destBoxes = document.querySelectorAll('.destinations-column .connector-box');
             const processorBox = document.querySelector('.processor-box');
             
-            if (!processorBox) return;
+            if (!processorBox || sourceBoxes.length === 0 || destBoxes.length === 0) return;
             
             try {
-                const processorRect = processorBox.getBoundingClientRect();
                 const diagramRect = diagram.getBoundingClientRect();
-            
-            // Position source connection lines
-            sourceBoxes.forEach((box, index) => {
-                try {
-                    const rect = box.getBoundingClientRect();
-                    const line = document.getElementById(`line-${box.dataset.source}`);
-                    if (!line) return;
-                    
-                    const startX = rect.right - diagramRect.left;
-                    const startY = rect.top + rect.height/2 - diagramRect.top;
-                    const endX = processorRect.left - diagramRect.left;
-                    const endY = processorRect.top + processorRect.height/2 - diagramRect.top;
+                const processorRect = processorBox.getBoundingClientRect();
                 
-                    // Make sure the line extends all the way to the processor box
-                    const width = Math.max(endX - startX, 10); // Ensure minimum width
-                    
-                    line.style.left = `${startX}px`;
-                    line.style.top = `${startY}px`;
-                    line.style.width = `${width}px`;
-                    line.style.height = '3px';
-                    line.style.transform = `rotate(${Math.atan2(endY - startY, endX - startX) * 180 / Math.PI}deg)`;
-                    line.style.transformOrigin = 'left center';
-                    
-                    // Add data particles
-                    createDataParticles(line, index * 500);
-                } catch (error) {
-                    console.warn('Error positioning source connection line:', error);
-                }
-            });
+                // Calculate processor center relative to diagram
+                const processorCenterX = processorRect.left + processorRect.width/2 - diagramRect.left;
+                const processorCenterY = processorRect.top + processorRect.height/2 - diagramRect.top;
             
-            // Position destination connection lines
-            destBoxes.forEach((box, index) => {
-                try {
-                    const rect = box.getBoundingClientRect();
-                    const line = document.getElementById(`line-${box.dataset.dest}`);
-                    if (!line) return;
-                    
-                    const startX = processorRect.right - diagramRect.left;
-                    const startY = processorRect.top + processorRect.height/2 - diagramRect.top;
-                    const endX = rect.left - diagramRect.left;
-                    const endY = rect.top + rect.height/2 - diagramRect.top;
-                    
-                    // Make sure the line extends all the way to the destination box
-                    const width = Math.max(endX - startX, 10); // Ensure minimum width
-                    
-                    line.style.left = `${startX}px`;
-                    line.style.top = `${startY}px`;
-                    line.style.width = `${width}px`;
-                    line.style.height = '3px';
-                    line.style.transform = `rotate(${Math.atan2(endY - startY, endX - startX) * 180 / Math.PI}deg)`;
-                    line.style.transformOrigin = 'left center';
-                    
-                    // Add data particles
-                    createDataParticles(line, 2000 + index * 500);
-                } catch (error) {
-                    console.warn('Error positioning destination connection line:', error);
-                }
-            });
-            
+                // Position source connection lines
+                sourceBoxes.forEach((box, index) => {
+                    try {
+                        const rect = box.getBoundingClientRect();
+                        const line = document.getElementById(`line-${box.dataset.source}`);
+                        if (!line) return;
+                        
+                        // Calculate start point (right edge center of source box)
+                        const startX = rect.right - diagramRect.left;
+                        const startY = rect.top + rect.height/2 - diagramRect.top;
+                        
+                        // Calculate end point (left edge center of processor box)
+                        const endX = processorRect.left - diagramRect.left;
+                        const endY = processorCenterY;
+                        
+                        // Calculate line properties
+                        const deltaX = endX - startX;
+                        const deltaY = endY - startY;
+                        const width = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                        const angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+                        
+                        // Apply styles
+                        line.style.left = `${startX}px`;
+                        line.style.top = `${startY}px`;
+                        line.style.width = `${width}px`;
+                        line.style.height = '3px';
+                        line.style.transform = `rotate(${angle}deg)`;
+                        line.style.transformOrigin = 'left center';
+                        line.style.opacity = '1';
+                        
+                        // Add data particles
+                        createDataParticles(line, index * 500);
+                    } catch (error) {
+                        console.warn('Error positioning source connection line:', error);
+                    }
+                });
+                
+                // Position destination connection lines
+                destBoxes.forEach((box, index) => {
+                    try {
+                        const rect = box.getBoundingClientRect();
+                        const line = document.getElementById(`line-${box.dataset.dest}`);
+                        if (!line) return;
+                        
+                        // Calculate start point (right edge center of processor box)
+                        const startX = processorRect.right - diagramRect.left;
+                        const startY = processorCenterY;
+                        
+                        // Calculate end point (left edge center of destination box)
+                        const endX = rect.left - diagramRect.left;
+                        const endY = rect.top + rect.height/2 - diagramRect.top;
+                        
+                        // Calculate line properties
+                        const deltaX = endX - startX;
+                        const deltaY = endY - startY;
+                        const width = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                        const angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+                        
+                        // Apply styles
+                        line.style.left = `${startX}px`;
+                        line.style.top = `${startY}px`;
+                        line.style.width = `${width}px`;
+                        line.style.height = '3px';
+                        line.style.transform = `rotate(${angle}deg)`;
+                        line.style.transformOrigin = 'left center';
+                        line.style.opacity = '1';
+                        
+                        // Add data particles
+                        createDataParticles(line, 2000 + index * 500);
+                    } catch (error) {
+                        console.warn('Error positioning destination connection line:', error);
+                    }
+                });
+                
             } catch (error) {
                 console.warn('Error initializing connection diagram:', error);
             }
-        }, 500);
+        }
+        
+        // Position lines after a delay to ensure layout is complete
+        setTimeout(positionLines, 100);
+        
+        // Re-position on window resize
+        window.addEventListener('resize', () => {
+            setTimeout(positionLines, 100);
+        });
     }
     
     // Create animated data particles on connection lines
@@ -221,72 +172,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }, delay);
     }
     
-    // Tab switching functionality
-    const toggleButtons = safeQuerySelectorAll('.toggle-btn');
-    const configContents = safeQuerySelectorAll('.config-content');
+
     
-    if (toggleButtons.length > 0 && configContents.length > 0) {
-        toggleButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const target = this.dataset.target;
-                
-                // Update active button
-                toggleButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Show corresponding content
-                configContents.forEach(content => {
-                    content.classList.remove('active');
-                    if (content.classList.contains(target + '-content')) {
-                        content.classList.add('active');
-                        // Render flowchart when visual tab is activated
-                        if (target === 'visual') {
-                            setTimeout(renderPipelineFlowchart, 100);
-                        }
-                    }
-                });
-            });
+    // Pricing toggle functionality
+    const billingToggle = document.getElementById('billing-toggle');
+    const priceAmount = document.getElementById('price-amount');
+    const pricePeriod = document.getElementById('price-period');
+    const priceNote = document.getElementById('price-note');
+    const pricingBtn = document.getElementById('pricing-btn');
+    
+    if (billingToggle && priceAmount && pricePeriod && priceNote && pricingBtn) {
+        billingToggle.addEventListener('change', function() {
+            if (this.checked) {
+                // Annual pricing (10 months = $499.00, save $100)
+                priceAmount.textContent = '499.00';
+                pricePeriod.textContent = '/ year';
+                priceNote.style.display = 'block';
+                pricingBtn.textContent = 'Start Annual Subscription';
+            } else {
+                // Monthly pricing
+                priceAmount.textContent = '49.90';
+                pricePeriod.textContent = '/ month';
+                priceNote.style.display = 'none';
+                pricingBtn.textContent = 'Start Monthly Subscription';
+            }
         });
     }
-    
-    // Interactive pipeline steps
-    const pipelineSteps = safeQuerySelectorAll('.pipeline-step');
-    
-    if (pipelineSteps.length > 0) {
-        pipelineSteps.forEach(step => {
-            step.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-8px)';
-                this.style.boxShadow = '0 20px 40px rgba(0, 220, 130, 0.2)';
-            });
-            
-            step.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-                this.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
-            });
-        });
-    }
-    
-    // Animate pipeline flow (for fallback visualization)
-    const flowItems = safeQuerySelectorAll('.flow-item');
-    
-    if (flowItems.length > 0) {
-        let delay = 0;
-        
-        flowItems.forEach(item => {
-            const element = item;
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-                element.style.transition = 'all 0.6s ease-out';
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-            }, delay);
-            
-            delay += 200;
-        });
-    }
-    
+
     // Add click to copy functionality for code blocks
     const codeBlocks = safeQuerySelectorAll('pre code');
     
@@ -308,14 +220,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Initialize Mermaid and render
-    const mermaidAvailable = initializeMermaid();
-    
-    if (mermaidAvailable) {
-        // Initial render
-        setTimeout(renderPipelineFlowchart, 500);
-    } else {
-        // Show fallback immediately if Mermaid not available
-        showFallbackVisualization();
-    }
+
 });
