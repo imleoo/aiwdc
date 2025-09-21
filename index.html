@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIWDC - The Open AI Content Pipeline</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <script src="assets/js/script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="assets/images/logo.svg" class="logo-image" alt="AiXsu Logo" width="32" height="32">
+                <span>AIWDC</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#docs">Docs</a>
+                <a href="#community">Community</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>The Open AI Content Pipeline</h1>
+            <h2>Data pipeline · AI content · Omnichannel publish</h2>
+            
+            <div class="connection-diagram">
+                <div class="sources-column">
+                    <div class="connector-box" data-source="rss">
+                        <img src="https://cdn-icons-png.flaticon.com/512/124/124033.png" alt="RSS Feed">
+                    </div>
+                    <div class="connector-box" data-source="web">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2165/2165004.png" alt="Web Scraper">
+                    </div>
+                    <div class="connector-box" data-source="database">
+                        <img src="https://cdn-icons-png.flaticon.com/512/148/148825.png" alt="Database">
+                    </div>
+                    <div class="connector-box" data-source="search">
+                        <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Search Engine">
+                    </div>
+                </div>
+                
+                <div class="connections-container">
+                    <div class="connection-line" id="line-rss"></div>
+                    <div class="connection-line" id="line-web"></div>
+                    <div class="connection-line" id="line-database"></div>
+                    <div class="connection-line" id="line-search"></div>
+                    <div class="connection-line" id="line-wordpress"></div>
+                    <div class="connection-line" id="line-shopify"></div>
+                    <div class="connection-line" id="line-twitter"></div>
+                    <div class="connection-line" id="line-facebook"></div>
+                    <div class="connection-line" id="line-linkedin"></div>
+                </div>
+                
+                <div class="processor-column">
+                    <div class="processor-box">
+                        <div class="processor-icon">
+                            <img src="assets/images/processor.svg" alt="AiXsu Processor" width="64" height="64">
+                        </div>
+                        <div class="processor-label">AiWDC.com</div>
+                    </div>
+                </div>
+                
+                <div class="destinations-column">
+                    <div class="connector-box" data-dest="wordpress">
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174881.png" alt="WordPress">
+                    </div>
+                    <div class="connector-box" data-dest="shopify">
+                        <img src="https://cdn-icons-png.flaticon.com/512/825/825500.png" alt="Shopify">
+                    </div>
+                    <div class="connector-box" data-dest="twitter">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3256/3256013.png" alt="Twitter">
+                    </div>
+                    <div class="connector-box" data-dest="facebook">
+                        <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook">
+                    </div>
+                    <div class="connector-box" data-dest="linkedin">
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="https://github.com/aiwdc/aiwdc" class="btn btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                    Get Started on GitHub
+                </a>
+                <a href="#deploy" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22.65 14.39L12 22.13 1.35 14.39c-.84-.56-1.35-1.5-1.35-2.52 0-1.66 1.34-3 3-3 .37 0 .73.07 1.07.2L12 18.3l6.93-4.23c.34-.13.7-.2 1.07-.2 1.66 0 3 1.34 3 3 0 1.02-.51 1.96-1.35 2.52z"/>
+                        <path d="M22.65 9.19L12 16.93 1.35 9.19C.51 8.63 0 7.69 0 6.67c0-1.66 1.34-3 3-3 .37 0 .73.07 1.07.2L12 12.3l7.93-4.23c.34-.13.7-.2 1.07-.2 1.66 0 3 1.34 3 3 0 1.02-.51 1.96-1.35 2.52z"/>
+                        <path d="M22.65 3.99L12 11.73 1.35 3.99C.51 3.43 0 2.49 0 1.47 0-.19 1.34-1.53 3-1.53c.37 0 .73.07 1.07.2L12 7.1l7.93-4.23c.34-.13.7-.2 1.07-.2 1.66 0 3 1.34 3 3 0 1.02-.51 1.96-1.35 2.52z"/>
+                    </svg>
+                    Deploy with Docker
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="assets/images/feature-connectors.svg" alt="Open Connectors" width="48" height="48">
+                    </div>
+                    <h3>Open Connectors</h3>
+                    <p>100+ data connectors: RSS, websites, APIs, search engines.</p>
+                    <p class="feature-subtext">Community-driven, extend with Python/Java.</p>
+                    <a href="#" class="feature-link">View Connectors →</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="assets/images/feature-middleware.svg" alt="AI Middleware" width="48" height="48">
+                    </div>
+                    <h3>AI Middleware</h3>
+                    <p>Plug in OpenAI, ZhipuAI, DeepSeek, or self-hosted models.</p>
+                    <p class="feature-subtext">Fine-grained control over prompt, style, and pipeline logic.</p>
+                    <a href="#" class="feature-link">Explore Models →</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="assets/images/feature-devops.svg" alt="DevOps Ready" width="48" height="48">
+                    </div>
+                    <h3>DevOps Ready</h3>
+                    <p>Dockerized services, scalable pipelines.</p>
+                    <p class="feature-subtext">API-first, integrate with CI/CD and monitoring.</p>
+                    <a href="#" class="feature-link">Deployment Guide →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="demo-section">
+        <div class="container">
+            <h2 class="section-title">Try It Yourself</h2>
+            <div class="demo-container">
+                <div class="demo-description">
+                    <h3>Interactive Demo</h3>
+                    <p>Experience how AiWDC transforms your data sources into polished content across multiple platforms.</p>
+                    <ul class="demo-features">
+                        <li>Connect to sample data sources</li>
+                        <li>Configure AI processing parameters</li>
+                        <li>Preview generated content</li>
+                        <li>Simulate multi-channel publishing</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Launch Interactive Demo</a>
+                </div>
+                <div class="demo-preview">
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <div class="terminal-title">demo.sh</div>
+                        </div>
+                        <div class="terminal-content">
+                            <pre><code>$ docker run -p 8080:8080 aiwdc/demo
+Pulling image aiwdc/demo:latest...
+Starting AiWDC demo environment...
+[INFO] Initializing connectors...
+[INFO] Loading sample data sources...
+[INFO] Starting AI processor...
+[INFO] Demo ready! Access at http://localhost:8080
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pipeline-section">
+        <div class="container">
+            <h2 class="section-title">Visual Pipeline Builder</h2>
+
+            <div class="pipeline-config">
+                <div class="config-toggle">
+                    <button class="toggle-btn active" data-target="code">YAML Code</button>
+                </div>
+                
+                <div class="config-content code-content">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="window-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <div class="window-title">pipeline.yaml</div>
+                        </div>
+                        <div class="code-content">
+                            <pre><code class="language-yaml"># AiWDC Pipeline Configuration
+version: 2.0
+
+sources:
+  - name: rss-tech-news
+    type: rss
+    config:
+      url: https://technews.example.com/rss
+      poll_interval: 3600
+
+  - name: web-scraper-news
+    type: web
+    config:
+      urls: ["https://news.example.com", "https://blog.example.com"]
+      selector: ".article-content"
+
+  - name: database-articles
+    type: database
+    config:
+      connection: ${DB_CONNECTION_STRING}
+      query: "SELECT * FROM articles WHERE published = true"
+
+  - name: search-engine-results
+    type: search
+    config:
+      engine: google
+      api_key: ${SEARCH_API_KEY}
+      query: "latest technology trends"
+
+ai_models:
+  - name: aiwdc-processor
+    type: aiwdc
+    config:
+      model_provider: dynamic
+      default_model: gpt-4
+      fallback_models: ["claude-3-opus", "qwen-max", "deepseek-v3"]
+      temperature: 0.7
+      max_tokens: 4000
+
+destinations:
+  - name: wordpress-blog
+    type: wordpress
+    config:
+      url: https://myblog.com/wp-json
+      username: ${WP_USERNAME}
+      password: ${WP_PASSWORD}
+
+  - name: shopify-store
+    type: shopify
+    config:
+      store: mystore.myshopify.com
+      access_token: ${SHOPIFY_TOKEN}
+
+  - name: twitter-account
+    type: twitter
+    config:
+      api_key: ${TWITTER_API_KEY}
+      api_secret: ${TWITTER_API_SECRET}
+
+  - name: facebook-page
+    type: facebook
+    config:
+      page_id: ${FACEBOOK_PAGE_ID}
+      access_token: ${FACEBOOK_ACCESS_TOKEN}
+
+  - name: linkedin-company
+    type: linkedin
+    config:
+      company_id: ${LINKEDIN_COMPANY_ID}
+      access_token: ${LINKEDIN_ACCESS_TOKEN}
+
+workflows:
+  - name: tech-content-pipeline
+    triggers:
+      - schedule: "0 9 * * *"
+    steps:
+      - extract: [rss-tech-news, web-scraper-news, database-articles, search-engine-results]
+      - transform: [openai-gpt4, claude-3, qwen-max, deepseek-v3]
+      - load: [wordpress-blog, shopify-store, twitter-account, facebook-page, linkedin-company]</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AiWDC</h4>
+                    <p>The Open AI Content Pipeline</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="#docs">Documentation</a>
+                    <a href="#tutorials">Tutorials</a>
+                    <a href="#api">API Reference</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <a href="https://github.com/aiwdc/aiwdc">GitHub</a>
+                    <a href="#discord">Discord</a>
+                    <a href="#twitter">Twitter</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 aiwdc.com. Open source under MIT License.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
