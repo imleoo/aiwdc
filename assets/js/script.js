@@ -111,52 +111,71 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (!processorBox) return;
             
-            const processorRect = processorBox.getBoundingClientRect();
-            const diagramRect = diagram.getBoundingClientRect();
+            try {
+                const processorRect = processorBox.getBoundingClientRect();
+                const diagramRect = diagram.getBoundingClientRect();
             
             // Position source connection lines
             sourceBoxes.forEach((box, index) => {
-                const rect = box.getBoundingClientRect();
-                const line = document.getElementById(`line-${box.dataset.source}`);
-                if (!line) return;
+                try {
+                    const rect = box.getBoundingClientRect();
+                    const line = document.getElementById(`line-${box.dataset.source}`);
+                    if (!line) return;
+                    
+                    const startX = rect.right - diagramRect.left;
+                    const startY = rect.top + rect.height/2 - diagramRect.top;
+                    const endX = processorRect.left - diagramRect.left;
+                    const endY = processorRect.top + processorRect.height/2 - diagramRect.top;
                 
-                const startX = rect.right - diagramRect.left;
-                const startY = rect.top + rect.height/2 - diagramRect.top;
-                const endX = processorRect.left - diagramRect.left;
-                const endY = processorRect.top + processorRect.height/2 - diagramRect.top;
-                
-                line.style.left = `${startX}px`;
-                line.style.top = `${startY}px`;
-                line.style.width = `${endX - startX}px`;
-                line.style.height = '3px';
-                line.style.transform = `rotate(${Math.atan2(endY - startY, endX - startX) * 180 / Math.PI}deg)`;
-                line.style.transformOrigin = 'left center';
-                
-                // Add data particles
-                createDataParticles(line, index * 500);
+                    // Make sure the line extends all the way to the processor box
+                    const width = Math.max(endX - startX, 10); // Ensure minimum width
+                    
+                    line.style.left = `${startX}px`;
+                    line.style.top = `${startY}px`;
+                    line.style.width = `${width}px`;
+                    line.style.height = '3px';
+                    line.style.transform = `rotate(${Math.atan2(endY - startY, endX - startX) * 180 / Math.PI}deg)`;
+                    line.style.transformOrigin = 'left center';
+                    
+                    // Add data particles
+                    createDataParticles(line, index * 500);
+                } catch (error) {
+                    console.warn('Error positioning source connection line:', error);
+                }
             });
             
             // Position destination connection lines
             destBoxes.forEach((box, index) => {
-                const rect = box.getBoundingClientRect();
-                const line = document.getElementById(`line-${box.dataset.dest}`);
-                if (!line) return;
-                
-                const startX = processorRect.right - diagramRect.left;
-                const startY = processorRect.top + processorRect.height/2 - diagramRect.top;
-                const endX = rect.left - diagramRect.left;
-                const endY = rect.top + rect.height/2 - diagramRect.top;
-                
-                line.style.left = `${startX}px`;
-                line.style.top = `${startY}px`;
-                line.style.width = `${endX - startX}px`;
-                line.style.height = '3px';
-                line.style.transform = `rotate(${Math.atan2(endY - startY, endX - startX) * 180 / Math.PI}deg)`;
-                line.style.transformOrigin = 'left center';
-                
-                // Add data particles
-                createDataParticles(line, 2000 + index * 500);
+                try {
+                    const rect = box.getBoundingClientRect();
+                    const line = document.getElementById(`line-${box.dataset.dest}`);
+                    if (!line) return;
+                    
+                    const startX = processorRect.right - diagramRect.left;
+                    const startY = processorRect.top + processorRect.height/2 - diagramRect.top;
+                    const endX = rect.left - diagramRect.left;
+                    const endY = rect.top + rect.height/2 - diagramRect.top;
+                    
+                    // Make sure the line extends all the way to the destination box
+                    const width = Math.max(endX - startX, 10); // Ensure minimum width
+                    
+                    line.style.left = `${startX}px`;
+                    line.style.top = `${startY}px`;
+                    line.style.width = `${width}px`;
+                    line.style.height = '3px';
+                    line.style.transform = `rotate(${Math.atan2(endY - startY, endX - startX) * 180 / Math.PI}deg)`;
+                    line.style.transformOrigin = 'left center';
+                    
+                    // Add data particles
+                    createDataParticles(line, 2000 + index * 500);
+                } catch (error) {
+                    console.warn('Error positioning destination connection line:', error);
+                }
             });
+            
+            } catch (error) {
+                console.warn('Error initializing connection diagram:', error);
+            }
         }, 500);
     }
     
