@@ -111,5 +111,6 @@ out/
 .com.apple.timemachine.donotpresent
 
 # Project specific
+.codebuddy/
 designs/private/
 assets/private/
