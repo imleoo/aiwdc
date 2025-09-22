@@ -1,0 +1,110 @@
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{ site.google_analytics }}');
+</script>
+
+<!-- Google Analytics 4 -->
+<script>
+  // Enhanced measurement configuration
+  gtag('config', '{{ site.google_analytics }}', {
+    'custom_map': {
+      'dimension1': 'content_category',
+      'dimension2': 'reading_time',
+      'metric1': 'engagement_score'
+    }
+  });
+
+  // Track content engagement
+  document.addEventListener('DOMContentLoaded', function() {
+    // Track article views
+    const articles = document.querySelectorAll('.article-card, .article-item');
+    articles.forEach(article => {
+      article.addEventListener('click', function() {
+        const title = this.querySelector('h3')?.textContent || 'Unknown Article';
+        const category = this.querySelector('.article-category')?.textContent || 'Unknown';
+
+        gtag('event', 'article_click', {
+          'event_category': 'engagement',
+          'event_label': title,
+          'content_category': category
+        });
+      });
+    });
+
+    // Track scroll depth
+    let maxScroll = 0;
+    window.addEventListener('scroll', function() {
+      const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      if (scrollPercent > maxScroll) {
+        maxScroll = scrollPercent;
+
+        if (scrollPercent === 25) {
+          gtag('event', 'scroll_25_percent', {
+            'event_category': 'engagement',
+            'event_label': 'Scroll Depth'
+          });
+        } else if (scrollPercent === 50) {
+          gtag('event', 'scroll_50_percent', {
+            'event_category': 'engagement',
+            'event_label': 'Scroll Depth'
+          });
+        } else if (scrollPercent === 75) {
+          gtag('event', 'scroll_75_percent', {
+            'event_category': 'engagement',
+            'event_label': 'Scroll Depth'
+          });
+        } else if (scrollPercent === 90) {
+          gtag('event', 'scroll_90_percent', {
+            'event_category': 'engagement',
+            'event_label': 'Scroll Depth'
+          });
+        }
+      }
+    });
+
+    // Track outbound links
+    const outboundLinks = document.querySelectorAll('a[href^="http"]');
+    outboundLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        const url = this.getAttribute('href');
+        gtag('event', 'outbound_click', {
+          'event_category': 'navigation',
+          'event_label': url,
+          'transport_type': 'beacon'
+        });
+      });
+    });
+
+    // Track filter usage on resources page
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        gtag('event', 'filter_usage', {
+          'event_category': 'resources',
+          'event_label': filter
+        });
+      });
+    });
+  });
+</script>
+
+<!-- Optional: Add Google Optimize for A/B testing -->
+<script src="https://www.googleoptimize.com/optimize.js?id=OPT_CONTAINER_ID"></script>
+
+<!-- Optional: Add Hotjar for heatmaps (if you have an account) -->
+<script>
+  (function(h,o,t,j,a,r){
+    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+    h._hjSettings={hjid:YOUR_HOTJAR_ID,hjsv:6};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>

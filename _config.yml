@@ -1,0 +1,92 @@
+# Site settings
+title: AiWDC - The Open AI Content Pipeline
+description: Connect your data, transform with AI, and publish everywhere. Automated content creation platform with multiple AI models.
+url: "https://aiwdc.com" # the base hostname & protocol for your site
+baseurl: "" # the subpath of your site, e.g. /blog
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:title/
+sass:
+  style: compressed
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  resources:
+    output: true
+    permalink: /resources/:name/
+  articles:
+    output: true
+    permalink: /articles/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: resources
+    values:
+      layout: resource
+  - scope:
+      path: ""
+      type: articles
+    values:
+      layout: article
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .bundle
+  - .sass-cache
+  - .jekyll-cache
+  - .jekyll-metadata
+  - .github
+
+# SEO and social media
+author: AiWDC
+twitter:
+  username: AiWDC
+  card: summary_large_image
+social:
+  name: AiWDC
+  links:
+    - https://twitter.com/AiWDC
+    - https://linkedin.com/company/aiwdc
+
+# Google Analytics
+google_analytics: G-XXXXXXXXXX # Replace with your actual GA4 ID
+
+# GitHub Pages specific
+github:
+  repository_url: https://github.com/yourusername/aiwdc.com
+
+# Navigation
+navigation:
+  - title: Features
+    url: /#features
+  - title: Pricing
+    url: /#pricing
+  - title: Resources
+    url: /resources/
+  - title: Community
+    url: /#community
+
+# Resource categories
+resource_categories:
+  - Documentation
+  - Tutorials
+  - Templates
+  - Blog

@@ -1,0 +1,99 @@
+---
+layout: default
+---
+<!-- Resources Hero Section -->
+<section class="resources-hero">
+    <div class="container">
+        <div class="resources-hero-content">
+            <h1>Resources & Documentation</h1>
+            <p>Everything you need to get started and master AI content automation with AiWDC</p>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Articles -->
+<section class="featured-articles">
+    <div class="container">
+        <h2 class="section-title">Featured Articles</h2>
+        <div class="articles-grid">
+            {% assign featured_articles = site.articles | where: "featured", true | limit: 3 %}
+            {% for article in featured_articles %}
+            <article class="article-card {% if article.featured %}featured{% endif %}">
+                <div class="article-image">
+                    <img src="{{ article.image | default: '/assets/images/default-article.jpg' | relative_url }}" alt="{{ article.title }}">
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="article-category">{{ article.category }}</span>
+                        <span class="article-date">{{ article.date | date: "%b %d, %Y" }}</span>
+                    </div>
+                    <h3><a href="{{ article.url | relative_url }}">{{ article.title }}</a></h3>
+                    <p>{{ article.description }}</p>
+                    <div class="article-footer">
+                        <span class="read-time">{{ article.read_time }} min read</span>
+                        <a href="{{ article.url | relative_url }}" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- All Articles -->
+<section class="all-articles">
+    <div class="container">
+        <div class="articles-header">
+            <h2 class="section-title">All Resources</h2>
+            <div class="articles-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                {% for category in site.resource_categories %}
+                <button class="filter-btn" data-filter="{{ category | downcase }}">{{ category }}</button>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="articles-list">
+            {% for article in site.articles %}
+            <article class="article-item" data-category="{{ article.category | downcase }}">
+                <div class="article-item-content">
+                    <div class="article-meta">
+                        <span class="article-category">{{ article.category }}</span>
+                        <span class="article-date">{{ article.date | date: "%b %d, %Y" }}</span>
+                    </div>
+                    <h3><a href="{{ article.url | relative_url }}">{{ article.title }}</a></h3>
+                    <p>{{ article.description }}</p>
+                    <span class="read-time">{{ article.read_time }} min read</span>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script>
+// Resource filtering functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const articleItems = document.querySelectorAll('.article-item');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+
+            const filter = this.getAttribute('data-filter');
+
+            articleItems.forEach(item => {
+                if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+</script>

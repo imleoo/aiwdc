@@ -1,0 +1,279 @@
+<!-- GitHub Analytics using GitHub Insights (built-in) -->
+
+<!-- Traffic analytics from GitHub Pages -->
+<script>
+  // Track page views for GitHub Pages (no external script needed)
+  document.addEventListener('DOMContentLoaded', function() {
+    // Track page load
+    const pageData = {
+      title: document.title,
+      url: window.location.pathname,
+      referrer: document.referrer,
+      timestamp: new Date().toISOString(),
+      screen_width: window.screen.width,
+      screen_height: window.screen.height,
+      viewport_width: window.innerWidth,
+      viewport_height: window.innerHeight
+    };
+
+    // Store in localStorage for basic analytics (optional)
+    if (typeof(Storage) !== "undefined") {
+      let pageViews = JSON.parse(localStorage.getItem('pageViews') || '[]');
+      pageViews.push(pageData);
+
+      // Keep only last 100 page views
+      if (pageViews.length > 100) {
+        pageViews = pageViews.slice(-100);
+      }
+
+      localStorage.setItem('pageViews', JSON.stringify(pageViews));
+    }
+
+    // Send to custom analytics endpoint if you have one
+    if (typeof window.sendAnalytics === 'function') {
+      window.sendAnalytics('page_view', pageData);
+    }
+
+    // Track GitHub-specific events
+    trackGitHubEvents();
+  });
+
+  function trackGitHubEvents() {
+    // Track star clicks
+    const starButton = document.querySelector('a[href*="/stargazers"]');
+    if (starButton) {
+      starButton.addEventListener('click', function() {
+        trackEvent('github_star_click', {
+          repository: getRepositoryName()
+        });
+      });
+    }
+
+    // Track fork clicks
+    const forkButton = document.querySelector('a[href*="/fork"]');
+    if (forkButton) {
+      forkButton.addEventListener('click', function() {
+        trackEvent('github_fork_click', {
+          repository: getRepositoryName()
+        });
+      });
+    }
+
+    // Track issue clicks
+    const issueLinks = document.querySelectorAll('a[href*="/issues"]');
+    issueLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        trackEvent('github_issue_click', {
+          repository: getRepositoryName(),
+          issue_type: link.textContent.includes('new') ? 'create' : 'view'
+        });
+      });
+    });
+
+    // Track PR clicks
+    const prLinks = document.querySelectorAll('a[href*="/pull"]');
+    prLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        trackEvent('github_pr_click', {
+          repository: getRepositoryName(),
+          pr_type: link.textContent.includes('new') ? 'create' : 'view'
+        });
+      });
+    });
+  }
+
+  function trackEvent(eventName, additionalData = {}) {
+    const eventData = {
+      event: eventName,
+      timestamp: new Date().toISOString(),
+      url: window.location.pathname,
+      ...additionalData
+    };
+
+    // Store in localStorage
+    if (typeof(Storage) !== "undefined") {
+      let events = JSON.parse(localStorage.getItem('githubEvents') || '[]');
+      events.push(eventData);
+
+      // Keep only last 50 events
+      if (events.length > 50) {
+        events = events.slice(-50);
+      }
+
+      localStorage.setItem('githubEvents', JSON.stringify(events));
+    }
+
+    // Send to custom analytics endpoint if you have one
+    if (typeof window.sendAnalytics === 'function') {
+      window.sendAnalytics(eventName, eventData);
+    }
+
+    // Log to console for debugging
+    console.log('GitHub Event Tracked:', eventData);
+  }
+
+  function getRepositoryName() {
+    const repositoryMeta = document.querySelector('meta[property="og:title"]');
+    if (repositoryMeta) {
+      return repositoryMeta.content;
+    }
+    return window.location.hostname;
+  }
+
+  // Track time on page
+  let timeOnPage = 0;
+  setInterval(function() {
+    timeOnPage += 10;
+
+    // Send time on page every 30 seconds
+    if (timeOnPage % 30 === 0) {
+      trackEvent('time_on_page', {
+        time_spent_seconds: timeOnPage
+      });
+    }
+  }, 10000);
+
+  // Track page visibility changes
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      trackEvent('page_hidden', {
+        time_spent_seconds: timeOnPage
+      });
+    } else {
+      trackEvent('page_visible', {
+        time_spent_seconds: timeOnPage
+      });
+    }
+  });
+
+  // Track form submissions
+  const forms = document.querySelectorAll('form');
+  forms.forEach(form => {
+    form.addEventListener('submit', function() {
+      trackEvent('form_submission', {
+        form_id: form.id || 'unknown',
+        form_action: form.action || 'unknown'
+      });
+    });
+  });
+
+  // Track file downloads
+  const downloadLinks = document.querySelectorAll('a[href$=".pdf"], a[href$=".zip"], a[href$=".tar"], a[href$=".gz"]');
+  downloadLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      const fileUrl = this.getAttribute('href');
+      const fileExtension = fileUrl.split('.').pop();
+
+      trackEvent('file_download', {
+        file_url: fileUrl,
+        file_type: fileExtension,
+        file_name: fileUrl.split('/').pop()
+      });
+    });
+  });
+
+  // Track social media shares
+  const socialLinks = document.querySelectorAll('a[href*="twitter.com"], a[href*="linkedin.com"], a[href*="facebook.com"]');
+  socialLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      const platform = link.href.includes('twitter.com') ? 'twitter' :
+                      link.href.includes('linkedin.com') ? 'linkedin' :
+                      link.href.includes('facebook.com') ? 'facebook' : 'unknown';
+
+      trackEvent('social_share_click', {
+        platform: platform,
+        url: link.href
+      });
+    });
+  });
+
+  // Export analytics data for manual inspection
+  window.exportAnalytics = function() {
+    const pageViews = JSON.parse(localStorage.getItem('pageViews') || '[]');
+    const githubEvents = JSON.parse(localStorage.getItem('githubEvents') || '[]');
+
+    const analyticsData = {
+      pageViews: pageViews,
+      githubEvents: githubEvents,
+      exportDate: new Date().toISOString()
+    };
+
+    const dataStr = JSON.stringify(analyticsData, null, 2);
+    const dataBlob = new Blob([dataStr], {type: 'application/json'});
+    const url = URL.createObjectURL(dataBlob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'github-analytics-export.json';
+    link.click();
+
+    URL.revokeObjectURL(url);
+
+    trackEvent('analytics_export', {
+      total_page_views: pageViews.length,
+      total_events: githubEvents.length
+    });
+  };
+
+  // Console command to view basic analytics
+  window.viewAnalytics = function() {
+    const pageViews = JSON.parse(localStorage.getItem('pageViews') || '[]');
+    const githubEvents = JSON.parse(localStorage.getItem('githubEvents') || '[]');
+
+    console.log('=== GitHub Pages Analytics ===');
+    console.log('Total Page Views:', pageViews.length);
+    console.log('Total Events:', githubEvents.length);
+    console.log('Recent Page Views:', pageViews.slice(-5));
+    console.log('Recent Events:', githubEvents.slice(-5));
+
+    // Calculate most popular pages
+    const pageCounts = {};
+    pageViews.forEach(view => {
+      pageCounts[view.url] = (pageCounts[view.url] || 0) + 1;
+    });
+
+    console.log('Page Popularity:', pageCounts);
+
+    trackEvent('analytics_viewed', {
+      total_page_views: pageViews.length,
+      total_events: githubEvents.length
+    });
+  };
+
+  console.log('GitHub Analytics initialized');
+  console.log('Use viewAnalytics() to see basic stats');
+  console.log('Use exportAnalytics() to export data');
+</script>
+
+<!-- Fathom Analytics (privacy-focused alternative) -->
+<script src="https://cdn.usefathom.com/script.js" data-site="YOUR_FATHOM_ID" defer></script>
+
+<!-- Plausible Analytics (privacy-focused alternative) -->
+<script defer data-domain="yourdomain.com" src="https://plausible.io/js/plausible.js"></script>
+
+<!-- Simple hit counter (optional) -->
+<script>
+  function updateHitCounter() {
+    // This is a simple implementation
+    // In production, you'd want to use a proper backend service
+    const counterUrl = 'https://api.countapi.xyz/hit/yourdomain.com/visits';
+
+    fetch(counterUrl)
+      .then(response => response.json())
+      .then(data => {
+        console.log('Total visits:', data.value);
+
+        // Optionally display on page
+        const counterElement = document.getElementById('hit-counter');
+        if (counterElement) {
+          counterElement.textContent = data.value;
+        }
+      })
+      .catch(error => {
+        console.log('Hit counter not available:', error);
+      });
+  }
+
+  // Uncomment to enable hit counter
+  // updateHitCounter();
+</script>
