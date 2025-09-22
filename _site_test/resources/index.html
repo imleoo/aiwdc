@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - AiWDC</title>
+    <meta name="description" content="Everything you need to get started and master AI content automation with AiWDC">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="/assets/js/script.js" defer></script>
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Resources - AiWDC | AiWDC - The Open AI Content Pipeline</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Resources - AiWDC" />
+<meta name="author" content="AiWDC" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Everything you need to get started and master AI content automation with AiWDC" />
+<meta property="og:description" content="Everything you need to get started and master AI content automation with AiWDC" />
+<link rel="canonical" href="https://aiwdc.com/resources/" />
+<meta property="og:url" content="https://aiwdc.com/resources/" />
+<meta property="og:site_name" content="AiWDC - The Open AI Content Pipeline" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Resources - AiWDC" />
+<meta name="twitter:site" content="@AiWDC" />
+<meta name="twitter:creator" content="@AiWDC" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"AiWDC"},"description":"Everything you need to get started and master AI content automation with AiWDC","headline":"Resources - AiWDC","url":"https://aiwdc.com/resources/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<!-- Google Analytics 4 -->
+<script>
+  // Enhanced measurement configuration
+  gtag('config', 'G-XXXXXXXXXX', {
+    'custom_map': {
+      'dimension1': 'content_category',
+      'dimension2': 'reading_time',
+      'metric1': 'engagement_score'
+    }
+  });
+
+  // Track content engagement
+  document.addEventListener('DOMContentLoaded', function() {
+    // Track article views
+    const articles = document.querySelectorAll('.article-card, .article-item');
+    articles.forEach(article => {
+      article.addEventListener('click', function() {
+        const title = this.querySelector('h3')?.textContent || 'Unknown Article';
+        const category = this.querySelector('.article-category')?.textContent || 'Unknown';
+
+        gtag('event', 'article_click', {
+          'event_category': 'engagement',
+          'event_label': title,
+          'content_category': category
+        });
+      });
+    });
+
+    // Track scroll depth
+    let maxScroll = 0;
+    window.addEventListener('scroll', function() {
+      const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      if (scrollPercent > maxScroll) {
+        maxScroll = scrollPercent;
+
+        if (scrollPercent === 25) {
+          gtag('event', 'scroll_25_percent', {
+            'event_category': 'engagement',
+            'event_label': 'Scroll Depth'
+          });
+        } else if (scrollPercent === 50) {
+          gtag('event', 'scroll_50_percent', {
+            'event_category': 'engagement',
+            'event_label': 'Scroll Depth'
+          });
+        } else if (scrollPercent === 75) {
+          gtag('event', 'scroll_75_percent', {
+            'event_category': 'engagement',
+            'event_label': 'Scroll Depth'
+          });
+        } else if (scrollPercent === 90) {
+          gtag('event', 'scroll_90_percent', {
+            'event_category': 'engagement',
+            'event_label': 'Scroll Depth'
+          });
+        }
+      }
+    });
+
+    // Track outbound links
+    const outboundLinks = document.querySelectorAll('a[href^="http"]');
+    outboundLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        const url = this.getAttribute('href');
+        gtag('event', 'outbound_click', {
+          'event_category': 'navigation',
+          'event_label': url,
+          'transport_type': 'beacon'
+        });
+      });
+    });
+
+    // Track filter usage on resources page
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        gtag('event', 'filter_usage', {
+          'event_category': 'resources',
+          'event_label': filter
+        });
+      });
+    });
+  });
+</script>
+
+<!-- Optional: Add Google Optimize for A/B testing -->
+<script src="https://www.googleoptimize.com/optimize.js?id=OPT_CONTAINER_ID"></script>
+
+<!-- Optional: Add Hotjar for heatmaps (if you have an account) -->
+<script>
+  (function(h,o,t,j,a,r){
+    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+    h._hjSettings={hjid:YOUR_HOTJAR_ID,hjsv:6};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+    <!-- GitHub Analytics using GitHub Insights (built-in) -->
+
+<!-- Traffic analytics from GitHub Pages -->
+<script>
+  // Track page views for GitHub Pages (no external script needed)
+  document.addEventListener('DOMContentLoaded', function() {
+    // Track page load
+    const pageData = {
+      title: document.title,
+      url: window.location.pathname,
+      referrer: document.referrer,
+      timestamp: new Date().toISOString(),
+      screen_width: window.screen.width,
+      screen_height: window.screen.height,
+      viewport_width: window.innerWidth,
+      viewport_height: window.innerHeight
+    };
+
+    // Store in localStorage for basic analytics (optional)
+    if (typeof(Storage) !== "undefined") {
+      let pageViews = JSON.parse(localStorage.getItem('pageViews') || '[]');
+      pageViews.push(pageData);
+
+      // Keep only last 100 page views
+      if (pageViews.length > 100) {
+        pageViews = pageViews.slice(-100);
+      }
+
+      localStorage.setItem('pageViews', JSON.stringify(pageViews));
+    }
+
+    // Send to custom analytics endpoint if you have one
+    if (typeof window.sendAnalytics === 'function') {
+      window.sendAnalytics('page_view', pageData);
+    }
+
+    // Track GitHub-specific events
+    trackGitHubEvents();
+  });
+
+  function trackGitHubEvents() {
+    // Track star clicks
+    const starButton = document.querySelector('a[href*="/stargazers"]');
+    if (starButton) {
+      starButton.addEventListener('click', function() {
+        trackEvent('github_star_click', {
+          repository: getRepositoryName()
+        });
+      });
+    }
+
+    // Track fork clicks
+    const forkButton = document.querySelector('a[href*="/fork"]');
+    if (forkButton) {
+      forkButton.addEventListener('click', function() {
+        trackEvent('github_fork_click', {
+          repository: getRepositoryName()
+        });
+      });
+    }
+
+    // Track issue clicks
+    const issueLinks = document.querySelectorAll('a[href*="/issues"]');
+    issueLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        trackEvent('github_issue_click', {
+          repository: getRepositoryName(),
+          issue_type: link.textContent.includes('new') ? 'create' : 'view'
+        });
+      });
+    });
+
+    // Track PR clicks
+    const prLinks = document.querySelectorAll('a[href*="/pull"]');
+    prLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        trackEvent('github_pr_click', {
+          repository: getRepositoryName(),
+          pr_type: link.textContent.includes('new') ? 'create' : 'view'
+        });
+      });
+    });
+  }
+
+  function trackEvent(eventName, additionalData = {}) {
+    const eventData = {
+      event: eventName,
+      timestamp: new Date().toISOString(),
+      url: window.location.pathname,
+      ...additionalData
+    };
+
+    // Store in localStorage
+    if (typeof(Storage) !== "undefined") {
+      let events = JSON.parse(localStorage.getItem('githubEvents') || '[]');
+      events.push(eventData);
+
+      // Keep only last 50 events
+      if (events.length > 50) {
+        events = events.slice(-50);
+      }
+
+      localStorage.setItem('githubEvents', JSON.stringify(events));
+    }
+
+    // Send to custom analytics endpoint if you have one
+    if (typeof window.sendAnalytics === 'function') {
+      window.sendAnalytics(eventName, eventData);
+    }
+
+    // Log to console for debugging
+    console.log('GitHub Event Tracked:', eventData);
+  }
+
+  function getRepositoryName() {
+    const repositoryMeta = document.querySelector('meta[property="og:title"]');
+    if (repositoryMeta) {
+      return repositoryMeta.content;
+    }
+    return window.location.hostname;
+  }
+
+  // Track time on page
+  let timeOnPage = 0;
+  setInterval(function() {
+    timeOnPage += 10;
+
+    // Send time on page every 30 seconds
+    if (timeOnPage % 30 === 0) {
+      trackEvent('time_on_page', {
+        time_spent_seconds: timeOnPage
+      });
+    }
+  }, 10000);
+
+  // Track page visibility changes
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      trackEvent('page_hidden', {
+        time_spent_seconds: timeOnPage
+      });
+    } else {
+      trackEvent('page_visible', {
+        time_spent_seconds: timeOnPage
+      });
+    }
+  });
+
+  // Track form submissions
+  const forms = document.querySelectorAll('form');
+  forms.forEach(form => {
+    form.addEventListener('submit', function() {
+      trackEvent('form_submission', {
+        form_id: form.id || 'unknown',
+        form_action: form.action || 'unknown'
+      });
+    });
+  });
+
+  // Track file downloads
+  const downloadLinks = document.querySelectorAll('a[href$=".pdf"], a[href$=".zip"], a[href$=".tar"], a[href$=".gz"]');
+  downloadLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      const fileUrl = this.getAttribute('href');
+      const fileExtension = fileUrl.split('.').pop();
+
+      trackEvent('file_download', {
+        file_url: fileUrl,
+        file_type: fileExtension,
+        file_name: fileUrl.split('/').pop()
+      });
+    });
+  });
+
+  // Track social media shares
+  const socialLinks = document.querySelectorAll('a[href*="twitter.com"], a[href*="linkedin.com"], a[href*="facebook.com"]');
+  socialLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      const platform = link.href.includes('twitter.com') ? 'twitter' :
+                      link.href.includes('linkedin.com') ? 'linkedin' :
+                      link.href.includes('facebook.com') ? 'facebook' : 'unknown';
+
+      trackEvent('social_share_click', {
+        platform: platform,
+        url: link.href
+      });
+    });
+  });
+
+  // Export analytics data for manual inspection
+  window.exportAnalytics = function() {
+    const pageViews = JSON.parse(localStorage.getItem('pageViews') || '[]');
+    const githubEvents = JSON.parse(localStorage.getItem('githubEvents') || '[]');
+
+    const analyticsData = {
+      pageViews: pageViews,
+      githubEvents: githubEvents,
+      exportDate: new Date().toISOString()
+    };
+
+    const dataStr = JSON.stringify(analyticsData, null, 2);
+    const dataBlob = new Blob([dataStr], {type: 'application/json'});
+    const url = URL.createObjectURL(dataBlob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'github-analytics-export.json';
+    link.click();
+
+    URL.revokeObjectURL(url);
+
+    trackEvent('analytics_export', {
+      total_page_views: pageViews.length,
+      total_events: githubEvents.length
+    });
+  };
+
+  // Console command to view basic analytics
+  window.viewAnalytics = function() {
+    const pageViews = JSON.parse(localStorage.getItem('pageViews') || '[]');
+    const githubEvents = JSON.parse(localStorage.getItem('githubEvents') || '[]');
+
+    console.log('=== GitHub Pages Analytics ===');
+    console.log('Total Page Views:', pageViews.length);
+    console.log('Total Events:', githubEvents.length);
+    console.log('Recent Page Views:', pageViews.slice(-5));
+    console.log('Recent Events:', githubEvents.slice(-5));
+
+    // Calculate most popular pages
+    const pageCounts = {};
+    pageViews.forEach(view => {
+      pageCounts[view.url] = (pageCounts[view.url] || 0) + 1;
+    });
+
+    console.log('Page Popularity:', pageCounts);
+
+    trackEvent('analytics_viewed', {
+      total_page_views: pageViews.length,
+      total_events: githubEvents.length
+    });
+  };
+
+  console.log('GitHub Analytics initialized');
+  console.log('Use viewAnalytics() to see basic stats');
+  console.log('Use exportAnalytics() to export data');
+</script>
+
+<!-- Fathom Analytics (privacy-focused alternative) -->
+<script src="https://cdn.usefathom.com/script.js" data-site="YOUR_FATHOM_ID" defer></script>
+
+<!-- Plausible Analytics (privacy-focused alternative) -->
+<script defer data-domain="yourdomain.com" src="https://plausible.io/js/plausible.js"></script>
+
+<!-- Simple hit counter (optional) -->
+<script>
+  function updateHitCounter() {
+    // This is a simple implementation
+    // In production, you'd want to use a proper backend service
+    const counterUrl = 'https://api.countapi.xyz/hit/yourdomain.com/visits';
+
+    fetch(counterUrl)
+      .then(response => response.json())
+      .then(data => {
+        console.log('Total visits:', data.value);
+
+        // Optionally display on page
+        const counterElement = document.getElementById('hit-counter');
+        if (counterElement) {
+          counterElement.textContent = data.value;
+        }
+      })
+      .catch(error => {
+        console.log('Hit counter not available:', error);
+      });
+  }
+
+  // Uncomment to enable hit counter
+  // updateHitCounter();
+</script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="/assets/images/logo.svg" class="logo-image" alt="AiWDC Logo" width="32" height="32">
+                <a href="/" style="text-decoration: none; color: inherit;">
+                    <span>AiWDC</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                
+                <a href="/#features">Features</a>
+                
+                <a href="/#pricing">Pricing</a>
+                
+                <a href="/resources/">Resources</a>
+                
+                <a href="/#community">Community</a>
+                
+                <div class="auth-links">
+                    <a href="/login.html" class="auth-link">Login</a>
+                    <a href="/register.html" class="auth-btn">Sign Up</a>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-menu">
+            
+            <a href="/#features">Features</a>
+            
+            <a href="/#pricing">Pricing</a>
+            
+            <a href="/resources/">Resources</a>
+            
+            <a href="/#community">Community</a>
+            
+            <div class="mobile-auth-links">
+                <a href="/login.html">Login</a>
+                <a href="/register.html">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Resources Hero Section -->
+<section class="resources-hero">
+    <div class="container">
+        <div class="resources-hero-content">
+            <h1>Resources & Documentation</h1>
+            <p>Everything you need to get started and master AI content automation with AiWDC</p>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Articles -->
+<section class="featured-articles">
+    <div class="container">
+        <h2 class="section-title">Featured Articles</h2>
+        <div class="articles-grid">
+            
+            
+            <article class="article-card featured">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop" alt="Advanced Workflow Automation Strategies">
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="article-category">Templates</span>
+                        <span class="article-date">Dec 10, 2024</span>
+                    </div>
+                    <h3><a href="/articles/workflow-automation/">Advanced Workflow Automation Strategies</a></h3>
+                    <p>Master advanced automation techniques to scale your content production. Learn about conditional logic, multi-step workflows, and error handling.</p>
+                    <div class="article-footer">
+                        <span class="read-time">15 min read</span>
+                        <a href="/articles/workflow-automation/" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="article-card featured">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop" alt="Choosing the Right AI Model for Your Content">
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="article-category">Tutorials</span>
+                        <span class="article-date">Dec 12, 2024</span>
+                    </div>
+                    <h3><a href="/articles/ai-models-guide/">Choosing the Right AI Model for Your Content</a></h3>
+                    <p>Compare GPT-4, Claude, and Qwen models to find the perfect fit for your content generation needs. Includes performance benchmarks and use case recommendations.</p>
+                    <div class="article-footer">
+                        <span class="read-time">12 min read</span>
+                        <a href="/articles/ai-models-guide/" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="article-card featured">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop" alt="Getting Started with AiWDC: Complete Setup Guide">
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="article-category">Documentation</span>
+                        <span class="article-date">Dec 15, 2024</span>
+                    </div>
+                    <h3><a href="/articles/getting-started/">Getting Started with AiWDC: Complete Setup Guide</a></h3>
+                    <p>Learn how to set up your first AI content pipeline in under 10 minutes. This comprehensive guide covers everything from account creation to your first automated workflow.</p>
+                    <div class="article-footer">
+                        <span class="read-time">8 min read</span>
+                        <a href="/articles/getting-started/" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </article>
+            
+        </div>
+    </div>
+</section>
+
+<!-- All Articles -->
+<section class="all-articles">
+    <div class="container">
+        <div class="articles-header">
+            <h2 class="section-title">All Resources</h2>
+            <div class="articles-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                
+                <button class="filter-btn" data-filter="documentation">Documentation</button>
+                
+                <button class="filter-btn" data-filter="tutorials">Tutorials</button>
+                
+                <button class="filter-btn" data-filter="templates">Templates</button>
+                
+                <button class="filter-btn" data-filter="blog">Blog</button>
+                
+            </div>
+        </div>
+
+        <div class="articles-list">
+            
+            <article class="article-item" data-category="tutorials">
+                <div class="article-item-content">
+                    <div class="article-meta">
+                        <span class="article-category">Tutorials</span>
+                        <span class="article-date">Dec 03, 2024</span>
+                    </div>
+                    <h3><a href="/articles/rss-blog-workflow/">Building Your First RSS to Blog Workflow</a></h3>
+                    <p>Step-by-step tutorial for creating an automated RSS feed to blog post workflow.</p>
+                    <span class="read-time">14 min read</span>
+                </div>
+            </article>
+            
+            <article class="article-item" data-category="blog">
+                <div class="article-item-content">
+                    <div class="article-meta">
+                        <span class="article-category">Blog</span>
+                        <span class="article-date">Dec 05, 2024</span>
+                    </div>
+                    <h3><a href="/articles/future-ai-content/">The Future of AI Content Creation: Trends and Predictions</a></h3>
+                    <p>Explore the latest trends in AI content creation and what the future holds for automated content generation.</p>
+                    <span class="read-time">8 min read</span>
+                </div>
+            </article>
+            
+            <article class="article-item" data-category="documentation">
+                <div class="article-item-content">
+                    <div class="article-meta">
+                        <span class="article-category">Documentation</span>
+                        <span class="article-date">Dec 08, 2024</span>
+                    </div>
+                    <h3><a href="/articles/data-source-connectors/">Data Source Connectors: Complete Reference</a></h3>
+                    <p>Detailed documentation for all available data source connectors and their configuration options.</p>
+                    <span class="read-time">10 min read</span>
+                </div>
+            </article>
+            
+            <article class="article-item" data-category="templates">
+                <div class="article-item-content">
+                    <div class="article-meta">
+                        <span class="article-category">Templates</span>
+                        <span class="article-date">Dec 10, 2024</span>
+                    </div>
+                    <h3><a href="/articles/workflow-automation/">Advanced Workflow Automation Strategies</a></h3>
+                    <p>Master advanced automation techniques to scale your content production. Learn about conditional logic, multi-step workflows, and error handling.</p>
+                    <span class="read-time">15 min read</span>
+                </div>
+            </article>
+            
+            <article class="article-item" data-category="tutorials">
+                <div class="article-item-content">
+                    <div class="article-meta">
+                        <span class="article-category">Tutorials</span>
+                        <span class="article-date">Dec 12, 2024</span>
+                    </div>
+                    <h3><a href="/articles/ai-models-guide/">Choosing the Right AI Model for Your Content</a></h3>
+                    <p>Compare GPT-4, Claude, and Qwen models to find the perfect fit for your content generation needs. Includes performance benchmarks and use case recommendations.</p>
+                    <span class="read-time">12 min read</span>
+                </div>
+            </article>
+            
+            <article class="article-item" data-category="documentation">
+                <div class="article-item-content">
+                    <div class="article-meta">
+                        <span class="article-category">Documentation</span>
+                        <span class="article-date">Dec 15, 2024</span>
+                    </div>
+                    <h3><a href="/articles/getting-started/">Getting Started with AiWDC: Complete Setup Guide</a></h3>
+                    <p>Learn how to set up your first AI content pipeline in under 10 minutes. This comprehensive guide covers everything from account creation to your first automated workflow.</p>
+                    <span class="read-time">8 min read</span>
+                </div>
+            </article>
+            
+        </div>
+    </div>
+</section>
+
+<script>
+// Resource filtering functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const articleItems = document.querySelectorAll('.article-item');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+
+            const filter = this.getAttribute('data-filter');
+
+            articleItems.forEach(item => {
+                if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+</script>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AiWDC</h4>
+                    <p>The Open AI Content Pipeline</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="/resources/">Documentation</a>
+                    <a href="/resources/">Tutorials</a>
+                    <a href="/resources/">Help Center</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <a href="#discord">Discord</a>
+                    <a href="#twitter">Twitter</a>
+                    <a href="#support">Support</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 aiwdc.com. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

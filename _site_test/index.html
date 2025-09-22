@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AiWDC - The Open AI Content Pipeline | Automated Content Creation Platform</title>
+    <meta name="description" content="AiWDC is the open AI content pipeline that connects your data, transforms it with AI, and publishes everywhere. Automate content creation with GPT-4, Claude, Qwen models.">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="/assets/js/script.js" defer></script>
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>AiWDC - The Open AI Content Pipeline Automated Content Creation Platform | AiWDC - The Open AI Content Pipeline</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="AiWDC - The Open AI Content Pipeline Automated Content Creation Platform" />
+<meta name="author" content="AiWDC" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="AiWDC is the open AI content pipeline that connects your data, transforms it with AI, and publishes everywhere. Automate content creation with GPT-4, Claude, Qwen models." />
+<meta property="og:description" content="AiWDC is the open AI content pipeline that connects your data, transforms it with AI, and publishes everywhere. Automate content creation with GPT-4, Claude, Qwen models." />
+<link rel="canonical" href="https://aiwdc.com/" />
+<meta property="og:url" content="https://aiwdc.com/" />
+<meta property="og:site_name" content="AiWDC - The Open AI Content Pipeline" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="AiWDC - The Open AI Content Pipeline Automated Content Creation Platform" />
+<meta name="twitter:site" content="@AiWDC" />
+<meta name="twitter:creator" content="@AiWDC" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"AiWDC"},"description":"AiWDC is the open AI content pipeline that connects your data, transforms it with AI, and publishes everywhere. Automate content creation with GPT-4, Claude, Qwen models.","headline":"AiWDC - The Open AI Content Pipeline Automated Content Creation Platform","name":"AiWDC","sameAs":["https://twitter.com/AiWDC","https://linkedin.com/company/aiwdc"],"url":"https://aiwdc.com/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<!-- Google Analytics 4 -->
+<script>
+  // Enhanced measurement configuration
+  gtag('config', 'G-XXXXXXXXXX', {
+    'custom_map': {
+      'dimension1': 'content_category',
+      'dimension2': 'reading_time',
+      'metric1': 'engagement_score'
+    }
+  });
+
+  // Track content engagement
+  document.addEventListener('DOMContentLoaded', function() {
+    // Track article views
+    const articles = document.querySelectorAll('.article-card, .article-item');
+    articles.forEach(article => {
+      article.addEventListener('click', function() {
+        const title = this.querySelector('h3')?.textContent || 'Unknown Article';
+        const category = this.querySelector('.article-category')?.textContent || 'Unknown';
+
+        gtag('event', 'article_click', {
+          'event_category': 'engagement',
+          'event_label': title,
+          'content_category': category
+        });
+      });
+    });
+
+    // Track scroll depth
+    let maxScroll = 0;
+    window.addEventListener('scroll', function() {
+      const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      if (scrollPercent > maxScroll) {
+        maxScroll = scrollPercent;
+
+        if (scrollPercent === 25) {
+          gtag('event', 'scroll_25_percent', {
+            'event_category': 'engagement',
+            'event_label': 'Scroll Depth'
+          });
+        } else if (scrollPercent === 50) {
+          gtag('event', 'scroll_50_percent', {
+            'event_category': 'engagement',
+            'event_label': 'Scroll Depth'
+          });
+        } else if (scrollPercent === 75) {
+          gtag('event', 'scroll_75_percent', {
+            'event_category': 'engagement',
+            'event_label': 'Scroll Depth'
+          });
+        } else if (scrollPercent === 90) {
+          gtag('event', 'scroll_90_percent', {
+            'event_category': 'engagement',
+            'event_label': 'Scroll Depth'
+          });
+        }
+      }
+    });
+
+    // Track outbound links
+    const outboundLinks = document.querySelectorAll('a[href^="http"]');
+    outboundLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        const url = this.getAttribute('href');
+        gtag('event', 'outbound_click', {
+          'event_category': 'navigation',
+          'event_label': url,
+          'transport_type': 'beacon'
+        });
+      });
+    });
+
+    // Track filter usage on resources page
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        gtag('event', 'filter_usage', {
+          'event_category': 'resources',
+          'event_label': filter
+        });
+      });
+    });
+  });
+</script>
+
+<!-- Optional: Add Google Optimize for A/B testing -->
+<script src="https://www.googleoptimize.com/optimize.js?id=OPT_CONTAINER_ID"></script>
+
+<!-- Optional: Add Hotjar for heatmaps (if you have an account) -->
+<script>
+  (function(h,o,t,j,a,r){
+    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+    h._hjSettings={hjid:YOUR_HOTJAR_ID,hjsv:6};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+    <!-- GitHub Analytics using GitHub Insights (built-in) -->
+
+<!-- Traffic analytics from GitHub Pages -->
+<script>
+  // Track page views for GitHub Pages (no external script needed)
+  document.addEventListener('DOMContentLoaded', function() {
+    // Track page load
+    const pageData = {
+      title: document.title,
+      url: window.location.pathname,
+      referrer: document.referrer,
+      timestamp: new Date().toISOString(),
+      screen_width: window.screen.width,
+      screen_height: window.screen.height,
+      viewport_width: window.innerWidth,
+      viewport_height: window.innerHeight
+    };
+
+    // Store in localStorage for basic analytics (optional)
+    if (typeof(Storage) !== "undefined") {
+      let pageViews = JSON.parse(localStorage.getItem('pageViews') || '[]');
+      pageViews.push(pageData);
+
+      // Keep only last 100 page views
+      if (pageViews.length > 100) {
+        pageViews = pageViews.slice(-100);
+      }
+
+      localStorage.setItem('pageViews', JSON.stringify(pageViews));
+    }
+
+    // Send to custom analytics endpoint if you have one
+    if (typeof window.sendAnalytics === 'function') {
+      window.sendAnalytics('page_view', pageData);
+    }
+
+    // Track GitHub-specific events
+    trackGitHubEvents();
+  });
+
+  function trackGitHubEvents() {
+    // Track star clicks
+    const starButton = document.querySelector('a[href*="/stargazers"]');
+    if (starButton) {
+      starButton.addEventListener('click', function() {
+        trackEvent('github_star_click', {
+          repository: getRepositoryName()
+        });
+      });
+    }
+
+    // Track fork clicks
+    const forkButton = document.querySelector('a[href*="/fork"]');
+    if (forkButton) {
+      forkButton.addEventListener('click', function() {
+        trackEvent('github_fork_click', {
+          repository: getRepositoryName()
+        });
+      });
+    }
+
+    // Track issue clicks
+    const issueLinks = document.querySelectorAll('a[href*="/issues"]');
+    issueLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        trackEvent('github_issue_click', {
+          repository: getRepositoryName(),
+          issue_type: link.textContent.includes('new') ? 'create' : 'view'
+        });
+      });
+    });
+
+    // Track PR clicks
+    const prLinks = document.querySelectorAll('a[href*="/pull"]');
+    prLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        trackEvent('github_pr_click', {
+          repository: getRepositoryName(),
+          pr_type: link.textContent.includes('new') ? 'create' : 'view'
+        });
+      });
+    });
+  }
+
+  function trackEvent(eventName, additionalData = {}) {
+    const eventData = {
+      event: eventName,
+      timestamp: new Date().toISOString(),
+      url: window.location.pathname,
+      ...additionalData
+    };
+
+    // Store in localStorage
+    if (typeof(Storage) !== "undefined") {
+      let events = JSON.parse(localStorage.getItem('githubEvents') || '[]');
+      events.push(eventData);
+
+      // Keep only last 50 events
+      if (events.length > 50) {
+        events = events.slice(-50);
+      }
+
+      localStorage.setItem('githubEvents', JSON.stringify(events));
+    }
+
+    // Send to custom analytics endpoint if you have one
+    if (typeof window.sendAnalytics === 'function') {
+      window.sendAnalytics(eventName, eventData);
+    }
+
+    // Log to console for debugging
+    console.log('GitHub Event Tracked:', eventData);
+  }
+
+  function getRepositoryName() {
+    const repositoryMeta = document.querySelector('meta[property="og:title"]');
+    if (repositoryMeta) {
+      return repositoryMeta.content;
+    }
+    return window.location.hostname;
+  }
+
+  // Track time on page
+  let timeOnPage = 0;
+  setInterval(function() {
+    timeOnPage += 10;
+
+    // Send time on page every 30 seconds
+    if (timeOnPage % 30 === 0) {
+      trackEvent('time_on_page', {
+        time_spent_seconds: timeOnPage
+      });
+    }
+  }, 10000);
+
+  // Track page visibility changes
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      trackEvent('page_hidden', {
+        time_spent_seconds: timeOnPage
+      });
+    } else {
+      trackEvent('page_visible', {
+        time_spent_seconds: timeOnPage
+      });
+    }
+  });
+
+  // Track form submissions
+  const forms = document.querySelectorAll('form');
+  forms.forEach(form => {
+    form.addEventListener('submit', function() {
+      trackEvent('form_submission', {
+        form_id: form.id || 'unknown',
+        form_action: form.action || 'unknown'
+      });
+    });
+  });
+
+  // Track file downloads
+  const downloadLinks = document.querySelectorAll('a[href$=".pdf"], a[href$=".zip"], a[href$=".tar"], a[href$=".gz"]');
+  downloadLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      const fileUrl = this.getAttribute('href');
+      const fileExtension = fileUrl.split('.').pop();
+
+      trackEvent('file_download', {
+        file_url: fileUrl,
+        file_type: fileExtension,
+        file_name: fileUrl.split('/').pop()
+      });
+    });
+  });
+
+  // Track social media shares
+  const socialLinks = document.querySelectorAll('a[href*="twitter.com"], a[href*="linkedin.com"], a[href*="facebook.com"]');
+  socialLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      const platform = link.href.includes('twitter.com') ? 'twitter' :
+                      link.href.includes('linkedin.com') ? 'linkedin' :
+                      link.href.includes('facebook.com') ? 'facebook' : 'unknown';
+
+      trackEvent('social_share_click', {
+        platform: platform,
+        url: link.href
+      });
+    });
+  });
+
+  // Export analytics data for manual inspection
+  window.exportAnalytics = function() {
+    const pageViews = JSON.parse(localStorage.getItem('pageViews') || '[]');
+    const githubEvents = JSON.parse(localStorage.getItem('githubEvents') || '[]');
+
+    const analyticsData = {
+      pageViews: pageViews,
+      githubEvents: githubEvents,
+      exportDate: new Date().toISOString()
+    };
+
+    const dataStr = JSON.stringify(analyticsData, null, 2);
+    const dataBlob = new Blob([dataStr], {type: 'application/json'});
+    const url = URL.createObjectURL(dataBlob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'github-analytics-export.json';
+    link.click();
+
+    URL.revokeObjectURL(url);
+
+    trackEvent('analytics_export', {
+      total_page_views: pageViews.length,
+      total_events: githubEvents.length
+    });
+  };
+
+  // Console command to view basic analytics
+  window.viewAnalytics = function() {
+    const pageViews = JSON.parse(localStorage.getItem('pageViews') || '[]');
+    const githubEvents = JSON.parse(localStorage.getItem('githubEvents') || '[]');
+
+    console.log('=== GitHub Pages Analytics ===');
+    console.log('Total Page Views:', pageViews.length);
+    console.log('Total Events:', githubEvents.length);
+    console.log('Recent Page Views:', pageViews.slice(-5));
+    console.log('Recent Events:', githubEvents.slice(-5));
+
+    // Calculate most popular pages
+    const pageCounts = {};
+    pageViews.forEach(view => {
+      pageCounts[view.url] = (pageCounts[view.url] || 0) + 1;
+    });
+
+    console.log('Page Popularity:', pageCounts);
+
+    trackEvent('analytics_viewed', {
+      total_page_views: pageViews.length,
+      total_events: githubEvents.length
+    });
+  };
+
+  console.log('GitHub Analytics initialized');
+  console.log('Use viewAnalytics() to see basic stats');
+  console.log('Use exportAnalytics() to export data');
+</script>
+
+<!-- Fathom Analytics (privacy-focused alternative) -->
+<script src="https://cdn.usefathom.com/script.js" data-site="YOUR_FATHOM_ID" defer></script>
+
+<!-- Plausible Analytics (privacy-focused alternative) -->
+<script defer data-domain="yourdomain.com" src="https://plausible.io/js/plausible.js"></script>
+
+<!-- Simple hit counter (optional) -->
+<script>
+  function updateHitCounter() {
+    // This is a simple implementation
+    // In production, you'd want to use a proper backend service
+    const counterUrl = 'https://api.countapi.xyz/hit/yourdomain.com/visits';
+
+    fetch(counterUrl)
+      .then(response => response.json())
+      .then(data => {
+        console.log('Total visits:', data.value);
+
+        // Optionally display on page
+        const counterElement = document.getElementById('hit-counter');
+        if (counterElement) {
+          counterElement.textContent = data.value;
+        }
+      })
+      .catch(error => {
+        console.log('Hit counter not available:', error);
+      });
+  }
+
+  // Uncomment to enable hit counter
+  // updateHitCounter();
+</script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="/assets/images/logo.svg" class="logo-image" alt="AiWDC Logo" width="32" height="32">
+                <a href="/" style="text-decoration: none; color: inherit;">
+                    <span>AiWDC</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                
+                <a href="/#features">Features</a>
+                
+                <a href="/#pricing">Pricing</a>
+                
+                <a href="/resources/">Resources</a>
+                
+                <a href="/#community">Community</a>
+                
+                <div class="auth-links">
+                    <a href="/login.html" class="auth-link">Login</a>
+                    <a href="/register.html" class="auth-btn">Sign Up</a>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-menu">
+            
+            <a href="/#features">Features</a>
+            
+            <a href="/#pricing">Pricing</a>
+            
+            <a href="/resources/">Resources</a>
+            
+            <a href="/#community">Community</a>
+            
+            <div class="mobile-auth-links">
+                <a href="/login.html">Login</a>
+                <a href="/register.html">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <h1>The Open AI Content Pipeline</h1>
+        <h2>Connect your data, transform with AI, and publish everywhere<br>Automated content creation powered by advanced AI models</h2>
+
+        <div class="connection-diagram">
+            <div class="sources-column">
+                <div class="connector-box" data-source="rss">
+                    <img src="https://cdn-icons-png.flaticon.com/512/124/124033.png" alt="RSS Feed Connector - Real-time content syndication">
+                </div>
+                <div class="connector-box" data-source="web">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2165/2165004.png" alt="Web Scraper Tool - Automated website content extraction">
+                </div>
+                <div class="connector-box" data-source="database">
+                    <img src="https://cdn-icons-png.flaticon.com/512/148/148825.png" alt="Database Integration - SQL and NoSQL data connectors">
+                </div>
+                <div class="connector-box" data-source="search">
+                    <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Search Engine Integration - Trending content discovery">
+                </div>
+            </div>
+
+            <div class="connections-container">
+                <div class="connection-line" id="line-rss" data-source="rss"></div>
+                <div class="connection-line" id="line-web" data-source="web"></div>
+                <div class="connection-line" id="line-database" data-source="database"></div>
+                <div class="connection-line" id="line-search" data-source="search"></div>
+                <div class="connection-line" id="line-wordpress" data-dest="wordpress"></div>
+                <div class="connection-line" id="line-shopify" data-dest="shopify"></div>
+                <div class="connection-line" id="line-twitter" data-dest="twitter"></div>
+                <div class="connection-line" id="line-facebook" data-dest="facebook"></div>
+                <div class="connection-line" id="line-linkedin" data-dest="linkedin"></div>
+            </div>
+
+            <div class="processor-column">
+                <div class="processor-box">
+                    <div class="processor-icon">
+                        <img src="/assets/images/processor.svg" alt="AiWDC AI Content Processing Engine" width="64" height="64">
+                    </div>
+                    <div class="processor-label">AiWDC.com</div>
+                </div>
+            </div>
+
+            <div class="destinations-column">
+                <div class="connector-box" data-dest="wordpress">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174881.png" alt="WordPress Publishing Platform - Automated blog posting">
+                </div>
+                <div class="connector-box" data-dest="shopify">
+                    <img src="https://cdn-icons-png.flaticon.com/512/825/825500.png" alt="Shopify E-commerce Platform - Product content automation">
+                </div>
+                <div class="connector-box" data-dest="twitter">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3256/3256013.png" alt="Twitter Social Media Platform - Automated tweet publishing">
+                </div>
+                <div class="connector-box" data-dest="facebook">
+                    <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook Social Media Platform - Automated post publishing">
+                </div>
+                <div class="connector-box" data-dest="linkedin">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Professional Network - Business content publishing">
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-buttons">
+            <a href="#cloud" class="btn btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22.65 14.39L12 22.13 1.35 14.39c-.84-.56-1.35-1.5-1.35-2.52 0-1.66 1.34-3 3-3 .37 0 .73.07 1.07.2L12 18.3l6.93-4.23c.34-.13.7-.2 1.07-.2 1.66 0 3 1.34 3 3 0 1.02-.51 1.96-1.35 2.52z"/>
+                    <path d="M22.65 9.19L12 16.93 1.35 9.19C.51 8.63 0 7.69 0 6.67c0-1.66 1.34-3 3-3 .37 0 .73.07 1.07.2L12 12.3l7.93-4.23c.34-.13.7-.2 1.07-.2 1.66 0 3 1.34 3 3 0 1.02-.51 1.96-1.35 2.52z"/>
+                    <path d="M22.65 3.99L12 11.73 1.35 3.99C.51 3.43 0 2.49 0 1.47 0-.19 1.34-1.53 3-1.53c.37 0 .73.07 1.07.2L12 7.1l7.93-4.23c.34-.13.7-.2 1.07-.2 1.66 0 3 1.34 3 3 0 1.02-.51 1.96-1.35 2.52z"/>
+                </svg>
+                Try AiWDC Cloud
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="features">
+    <div class="container">
+        <h2 class="section-title">Key Features - AI Content Automation Platform</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="/assets/images/feature-connectors.svg" alt="Data Pipeline" width="48" height="48">
+                </div>
+                <h3>Data Pipeline</h3>
+                <p>Connect to multiple data sources: RSS, websites, APIs, databases, search engines.</p>
+                <p class="feature-subtext">Unified data extraction and transformation layer.</p>
+                <a href="#connectors" class="feature-link">View Connectors →</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="/assets/images/feature-middleware.svg" alt="AI Content" width="48" height="48">
+                </div>
+                <h3>AI Content</h3>
+                <p>Generate high-quality content with OpenAI, Claude, Qwen, or self-hosted models.</p>
+                <p class="feature-subtext">Fine-grained control over tone, style, and formatting.</p>
+                <a href="#middleware" class="feature-link">Explore AI Models →</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="/assets/images/feature-devops.svg" alt="Omnichannel Publish" width="48" height="48">
+                </div>
+                <h3>Omnichannel Publish</h3>
+                <p>Distribute content to WordPress, Shopify, social media, and more.</p>
+                <p class="feature-subtext">Automated publishing with customized formatting for each platform.</p>
+                <a href="#publishing" class="feature-link">Publishing Options →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="pricing-section">
+    <div class="container">
+        <h2 class="section-title">Transparent & Reasonable Pricing Models</h2>
+
+        <div class="billing-toggle">
+            <span class="billing-label">Monthly</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="billing-toggle">
+                <span class="slider"></span>
+            </label>
+            <span class="billing-label">Annual <span class="discount-badge">Save 20%</span></span>
+        </div>
+
+        <div class="pricing-container">
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>AiWDC Cloud</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount" id="price-amount">49.90</span>
+                        <span class="period" id="price-period">/ month</span>
+                    </div>
+                    <div class="price-note" id="price-note" style="display: none;">
+                        <span class="original-price">$599.00/year</span>
+                        <span class="savings">Save $100 annually</span>
+                    </div>
+                    <p class="pricing-description">Complete AI content pipeline solution</p>
+                </div>
+
+                <div class="pricing-features">
+                    <ul class="feature-list">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            Multiple Data Source Connectors
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            Multi-Model AI Processing (GPT-4, Claude, Qwen)
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            Unlimited Content Generation
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            Multi-Platform Publishing
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            Advanced Workflow Automation
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            24/7 Priority Support
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            Custom Integration Support
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            99.9% Uptime SLA
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="pricing-footer">
+                    <a href="#cloud" class="btn btn-primary pricing-btn" id="pricing-btn">
+                        Start Monthly Subscription
+                    </a>
+                    <p class="pricing-guarantee">No setup fees • Cancel anytime • 30-day money-back guarantee</p>
+                </div>
+            </div>
+        </div>
+
+            <div class="pricing-faq">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>What's included in the monthly subscription?</h4>
+                        <p>Full access to all AiWDC features including unlimited data sources, AI processing, content generation, and multi-platform publishing.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Can I cancel anytime?</h4>
+                        <p>Yes, you can cancel your subscription at any time. No long-term contracts or cancellation fees.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Do you offer custom enterprise solutions?</h4>
+                        <p>Yes, we provide custom enterprise solutions with dedicated support, on-premise deployment options, and tailored integrations.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>What payment methods do you accept?</h4>
+                        <p>We accept Stripe for traditional payments and cryptocurrencies including Bitcoin (BTC), Ethereum (ETH), and USD Coin (USDC).</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Is there a free trial available?</h4>
+                        <p>Yes, we offer a 14-day free trial with full access to all features. No credit card required to start.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>How does the AI content generation work?</h4>
+                        <p>Our platform integrates with leading AI models (GPT-4, Claude, Qwen) to transform your raw data into high-quality, contextual content tailored to your brand voice and style.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>What kind of data sources can I connect?</h4>
+                        <p>Connect RSS feeds, websites, databases (MySQL, PostgreSQL), APIs, search engines, social media, and more. We support multiple different data source types.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Can I customize the AI-generated content?</h4>
+                        <p>Absolutely! You have full control over tone, style, format, length, and can set custom prompts and templates for each content type and publishing platform.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Is my data secure and private?</h4>
+                        <p>Yes, we use enterprise-grade security with end-to-end encryption, SOC 2 compliance, and never store your sensitive data longer than necessary for processing.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>What publishing platforms are supported?</h4>
+                        <p>We support WordPress, Shopify, social media platforms (Twitter, Facebook, LinkedIn), email newsletters, and many more. Custom integrations are also available.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>How fast is AI content generation?</h4>
+                        <p>Our AI content generation is highly optimized for speed. Most content pieces are generated within 10-30 seconds, depending on length and complexity. Batch processing allows for even faster throughput when handling multiple pieces simultaneously.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>How do you ensure AI-generated content quality?</h4>
+                        <p>We maintain high content quality through multiple layers: advanced AI model selection (GPT-4, Claude, Qwen), customizable prompts and templates, built-in content validation, plagiarism detection, and quality scoring algorithms. You can also set review workflows before publishing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Community Section -->
+<section id="community" class="community-section">
+    <div class="container">
+        <h2 class="section-title">Join Our Community</h2>
+        <p class="section-description">Connect with fellow creators, developers, and AI enthusiasts building the future of content automation</p>
+
+        <div class="community-grid">
+            <div class="community-card">
+                <div class="community-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" width="48" height="48">
+                </div>
+                <h3>Discord Community</h3>
+                <p>Join our active Discord server with 2,000+ members sharing tips, workflows, and getting real-time support</p>
+                <ul class="community-features">
+                    <li>24/7 community support</li>
+                    <li>Workflow sharing & templates</li>
+                    <li>Beta feature previews</li>
+                    <li>Direct access to developers</li>
+                </ul>
+                <a href="#discord" class="btn btn-primary">Join Discord</a>
+            </div>
+
+            <div class="community-card">
+                <div class="community-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3256/3256013.png" alt="Twitter" width="48" height="48">
+                </div>
+                <h3>Twitter Updates</h3>
+                <p>Follow us for the latest updates, feature announcements, and AI content automation tips</p>
+                <ul class="community-features">
+                    <li>Product updates & news</li>
+                    <li>AI automation tips</li>
+                    <li>Community highlights</li>
+                    <li>Industry insights</li>
+                </ul>
+                <a href="#twitter" class="btn btn-secondary">Follow @AiWDC</a>
+            </div>
+
+            <div class="community-card">
+                <div class="community-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="48" height="48">
+                </div>
+                <h3>LinkedIn Community</h3>
+                <p>Connect with AI content automation professionals and stay updated with industry insights</p>
+                <ul class="community-features">
+                    <li>Professional networking</li>
+                    <li>Industry updates</li>
+                    <li>Success stories</li>
+                    <li>Expert insights</li>
+                </ul>
+                <a href="https://linkedin.com/company/aiwdc" class="btn btn-secondary">Follow on LinkedIn</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Initialize any page-specific JavaScript here
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize connection diagram if it exists on this page
+    if (document.querySelector('.connection-diagram')) {
+        // Connection diagram initialization code can be added here
+        console.log('Connection diagram initialized');
+    }
+});
+</script>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AiWDC</h4>
+                    <p>The Open AI Content Pipeline</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="/resources/">Documentation</a>
+                    <a href="/resources/">Tutorials</a>
+                    <a href="/resources/">Help Center</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <a href="#discord">Discord</a>
+                    <a href="#twitter">Twitter</a>
+                    <a href="#support">Support</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 aiwdc.com. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
