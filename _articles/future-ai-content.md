@@ -5,9 +5,10 @@ category: Blog
 date: 2024-12-05
 description: "Explore the latest trends in AI content creation and what the future holds for automated content generation."
 read_time: 8
-image: "https://maas-log-prod.cn-wlcb.ufileos.com/anthropic/0387fa09-fd0c-482a-9a55-40631b2ee6d8/b893dce3040f24caedd7b7e521408a6e.png?UCloudPublicKey=TOKEN_e15ba47a-d098-4fbd-9afc-a0dcf0e4e621&Expires=1758558646&Signature=7m+39f+WNlrp3OSuW8jFNAPczSI="
+image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
 twitter:
   card: summary_large_image
+  image: "https://maas-log-prod.cn-wlcb.ufileos.com/anthropic/0387fa09-fd0c-482a-9a55-40631b2ee6d8/b893dce3040f24caedd7b7e521408a6e.png?UCloudPublicKey=TOKEN_e15ba47a-d098-4fbd-9afc-a0dcf0e4e621&Expires=1758558646&Signature=7m+39f+WNlrp3OSuW8jFNAPczSI="
 ---
 
 # The Future of AI Content Creation: Trends and Predictions

@@ -6,7 +6,10 @@ featured: true
 date: 2024-12-15
 description: "Learn how to set up your first AI content pipeline in under 10 minutes. This comprehensive guide covers everything from account creation to your first automated workflow."
 read_time: 8
-image: "https://maas-log-prod.cn-wlcb.ufileos.com/anthropic/0387fa09-fd0c-482a-9a55-40631b2ee6d8/b893dce3040f24caedd7b7e521408a6e.png?UCloudPublicKey=TOKEN_e15ba47a-d098-4fbd-9afc-a0dcf0e4e621&Expires=1758558646&Signature=7m+39f+WNlrp3OSuW8jFNAPczSI="
+image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+twitter:
+  card: summary_large_image
+  image: "https://maas-log-prod.cn-wlcb.ufileos.com/anthropic/0387fa09-fd0c-482a-9a55-40631b2ee6d8/b893dce3040f24caedd7b7e521408a6e.png?UCloudPublicKey=TOKEN_e15ba47a-d098-4fbd-9afc-a0dcf0e4e621&Expires=1758558646&Signature=7m+39f+WNlrp3OSuW8jFNAPczSI="
 twitter:
   card: summary_large_image
 ---
