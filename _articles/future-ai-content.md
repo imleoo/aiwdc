@@ -207,7 +207,7 @@ marketing_evolution:
 **Learning Revolution**
 - **Personalized Curriculum**: Education tailored to individual needs
 - **Adaptive Learning**: Real-time difficulty adjustment
-- **AI Tutors**: 24/7 personalized instruction
+- **AI Tutors**: Always-available personalized instruction
 - **Skill Assessment**: Continuous competency evaluation
 
 **Educational Impact**

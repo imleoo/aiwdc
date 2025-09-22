@@ -153,7 +153,7 @@ Now that you have your basic pipeline running, consider:
 
 - **Documentation**: Comprehensive guides and API reference
 - **Community**: Join our Discord server
-- **Support**: Contact our 24/7 support team
+- **Support**: Contact our team via email and community forums
 - **Tutorials**: Video guides and walkthroughs
 
 Congratulations! You've set up your first AI content pipeline with AiWDC. Your automated content generation is now ready to scale your content production.
