@@ -1,8 +1,8 @@
 # Site settings
 title: AiWDC - The Open AI Content Pipeline
 description: Connect your data, transform with AI, and publish everywhere. Automated content creation platform with multiple AI models.
-url: "https://imleoo.github.io" # the base hostname & protocol for your site
-baseurl: "/aiwdc" # the subpath of your site, e.g. /blog
+url: "https://aiwdc.com" # the base hostname & protocol for your site
+baseurl: "" # the subpath of your site, e.g. /blog
 
 # Build settings
 markdown: kramdown
