@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - AiWDC</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="assets/js/script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="assets/images/logo.svg" class="logo-image" alt="AiWDC Logo" width="32" height="32">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <span>AiWDC</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="resources.html" class="active">Resources</a>
+                <a href="index.html#community">Community</a>
+                <div class="auth-links">
+                    <a href="login.html" class="auth-link">Login</a>
+                    <a href="register.html" class="auth-btn">Sign Up</a>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-menu">
+            <a href="index.html#features">Features</a>
+            <a href="index.html#pricing">Pricing</a>
+            <a href="resources.html">Resources</a>
+            <a href="index.html#community">Community</a>
+            <div class="mobile-auth-links">
+                <a href="login.html">Login</a>
+                <a href="register.html">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Resources Hero Section -->
+    <section class="resources-hero">
+        <div class="container">
+            <div class="resources-hero-content">
+                <h1>Resources & Documentation</h1>
+                <p>Everything you need to get started and master AI content automation with AiWDC</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Articles -->
+    <section class="featured-articles">
+        <div class="container">
+            <h2 class="section-title">Featured Articles</h2>
+            <div class="articles-grid">
+                <article class="article-card featured">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=250&fit=crop" alt="Getting Started Guide">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Documentation</span>
+                            <span class="article-date">Dec 15, 2024</span>
+                        </div>
+                        <h3><a href="article-getting-started.html">Getting Started with AiWDC: Complete Setup Guide</a></h3>
+                        <p>Learn how to set up your first AI content pipeline in under 10 minutes. This comprehensive guide covers everything from account creation to your first automated workflow.</p>
+                        <div class="article-footer">
+                            <span class="read-time">8 min read</span>
+                            <a href="article-getting-started.html" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop" alt="AI Models Guide">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Tutorials</span>
+                            <span class="article-date">Dec 12, 2024</span>
+                        </div>
+                        <h3><a href="article-ai-models.html">Choosing the Right AI Model for Your Content</a></h3>
+                        <p>Compare GPT-4, Claude, and Qwen models to find the perfect fit for your content generation needs. Includes performance benchmarks and use case recommendations.</p>
+                        <div class="article-footer">
+                            <span class="read-time">12 min read</span>
+                            <a href="article-ai-models.html" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop" alt="Workflow Automation">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Templates</span>
+                            <span class="article-date">Dec 10, 2024</span>
+                        </div>
+                        <h3><a href="article-workflow-automation.html">Advanced Workflow Automation Strategies</a></h3>
+                        <p>Master advanced automation techniques to scale your content production. Learn about conditional logic, multi-step workflows, and error handling.</p>
+                        <div class="article-footer">
+                            <span class="read-time">15 min read</span>
+                            <a href="article-workflow-automation.html" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Articles -->
+    <section class="all-articles">
+        <div class="container">
+            <div class="articles-header">
+                <h2 class="section-title">All Resources</h2>
+                <div class="articles-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="documentation">Documentation</button>
+                    <button class="filter-btn" data-filter="tutorials">Tutorials</button>
+                    <button class="filter-btn" data-filter="templates">Templates</button>
+                    <button class="filter-btn" data-filter="api">API</button>
+                </div>
+            </div>
+            
+            <div class="articles-list">
+                <article class="article-item" data-category="documentation">
+                    <div class="article-item-content">
+                        <div class="article-meta">
+                            <span class="article-category">Documentation</span>
+                            <span class="article-date">Dec 15, 2024</span>
+                        </div>
+                        <h3><a href="article-getting-started.html">Getting Started with AiWDC: Complete Setup Guide</a></h3>
+                        <p>Learn how to set up your first AI content pipeline in under 10 minutes.</p>
+                        <span class="read-time">8 min read</span>
+                    </div>
+                </article>
+                
+                <article class="article-item" data-category="tutorials">
+                    <div class="article-item-content">
+                        <div class="article-meta">
+                            <span class="article-category">Tutorials</span>
+                            <span class="article-date">Dec 12, 2024</span>
+                        </div>
+                        <h3><a href="article-ai-models.html">Choosing the Right AI Model for Your Content</a></h3>
+                        <p>Compare GPT-4, Claude, and Qwen models to find the perfect fit for your needs.</p>
+                        <span class="read-time">12 min read</span>
+                    </div>
+                </article>
+                
+                <article class="article-item" data-category="templates">
+                    <div class="article-item-content">
+                        <div class="article-meta">
+                            <span class="article-category">Templates</span>
+                            <span class="article-date">Dec 10, 2024</span>
+                        </div>
+                        <h3><a href="article-workflow-automation.html">Advanced Workflow Automation Strategies</a></h3>
+                        <p>Master advanced automation techniques to scale your content production.</p>
+                        <span class="read-time">15 min read</span>
+                    </div>
+                </article>
+                
+                <article class="article-item" data-category="documentation">
+                    <div class="article-item-content">
+                        <div class="article-meta">
+                            <span class="article-category">Documentation</span>
+                            <span class="article-date">Dec 8, 2024</span>
+                        </div>
+                        <h3><a href="#">Data Source Connectors: Complete Reference</a></h3>
+                        <p>Detailed documentation for all available data source connectors and their configuration options.</p>
+                        <span class="read-time">10 min read</span>
+                    </div>
+                </article>
+                
+                <article class="article-item" data-category="api">
+                    <div class="article-item-content">
+                        <div class="article-meta">
+                            <span class="article-category">API</span>
+                            <span class="article-date">Dec 5, 2024</span>
+                        </div>
+                        <h3><a href="#">REST API Authentication Guide</a></h3>
+                        <p>Learn how to authenticate and make API calls to integrate AiWDC with your applications.</p>
+                        <span class="read-time">6 min read</span>
+                    </div>
+                </article>
+                
+                <article class="article-item" data-category="tutorials">
+                    <div class="article-item-content">
+                        <div class="article-meta">
+                            <span class="article-category">Tutorials</span>
+                            <span class="article-date">Dec 3, 2024</span>
+                        </div>
+                        <h3><a href="#">Building Your First RSS to Blog Workflow</a></h3>
+                        <p>Step-by-step tutorial for creating an automated RSS feed to blog post workflow.</p>
+                        <span class="read-time">14 min read</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AiWDC</h4>
+                    <p>The Open AI Content Pipeline</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="resources.html">Documentation</a>
+                    <a href="resources.html">Tutorials</a>
+                    <a href="resources.html">Help Center</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <a href="#discord">Discord</a>
+                    <a href="#twitter">Twitter</a>
+                    <a href="#support">Support</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 aiwdc.com. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
