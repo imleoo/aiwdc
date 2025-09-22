@@ -27,8 +27,8 @@
                 <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
                 {% endfor %}
                 <div class="auth-links">
-                    <a href="{{ '/login.html' | relative_url }}" class="auth-link">Login</a>
-                    <a href="{{ '/register.html' | relative_url }}" class="auth-btn">Sign Up</a>
+                    <a href="{{ '/login/' | relative_url }}" class="auth-link">Login</a>
+                    <a href="{{ '/register/' | relative_url }}" class="auth-btn">Sign Up</a>
                 </div>
             </div>
             <div class="mobile-menu-toggle">
@@ -42,8 +42,8 @@
             <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
             {% endfor %}
             <div class="mobile-auth-links">
-                <a href="{{ '/login.html' | relative_url }}">Login</a>
-                <a href="{{ '/register.html' | relative_url }}">Sign Up</a>
+                <a href="{{ '/login/' | relative_url }}">Login</a>
+                <a href="{{ '/register/' | relative_url }}">Sign Up</a>
             </div>
         </div>
     </nav>

@@ -53,7 +53,7 @@ exclude:
   - .sass-cache
   - .jekyll-cache
   - .jekyll-metadata
-  - .github
+  - .github/workflows
 
 # SEO and social media
 author: AiWDC
