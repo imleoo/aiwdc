@@ -1,7 +1,11 @@
 // Main application functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize connection diagram
-    initConnectionDiagram();
+    // Initialize connection diagram with error handling
+    try {
+        initConnectionDiagram();
+    } catch (error) {
+        console.warn('Error initializing connection diagram:', error);
+    }
     
     // Safe element selection with null checks
     function safeQuerySelector(selector) {
@@ -35,6 +39,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!processorBox || sourceBoxes.length === 0 || destBoxes.length === 0) return;
             
             try {
+                // Additional null checks before calling getBoundingClientRect
+                if (!diagram || !processorBox) {
+                    console.warn('Required elements not found for connection diagram');
+                    return;
+                }
+                
                 const diagramRect = diagram.getBoundingClientRect();
                 const processorRect = processorBox.getBoundingClientRect();
                 
@@ -45,6 +55,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Position source connection lines
                 sourceBoxes.forEach((box, index) => {
                     try {
+                        // Check if box exists and has dataset
+                        if (!box || !box.dataset || !box.dataset.source) {
+                            console.warn('Invalid source box:', box);
+                            return;
+                        }
+                        
                         const rect = box.getBoundingClientRect();
                         const line = document.getElementById(`line-${box.dataset.source}`);
                         if (!line) return;
@@ -82,6 +98,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Position destination connection lines
                 destBoxes.forEach((box, index) => {
                     try {
+                        // Check if box exists and has dataset
+                        if (!box || !box.dataset || !box.dataset.dest) {
+                            console.warn('Invalid destination box:', box);
+                            return;
+                        }
+                        
                         const rect = box.getBoundingClientRect();
                         const line = document.getElementById(`line-${box.dataset.dest}`);
                         if (!line) return;
@@ -122,11 +144,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Position lines after a delay to ensure layout is complete
-        setTimeout(positionLines, 100);
+        setTimeout(() => {
+            try {
+                positionLines();
+            } catch (error) {
+                console.warn('Error positioning lines:', error);
+            }
+        }, 100);
         
         // Re-position on window resize
         window.addEventListener('resize', () => {
-            setTimeout(positionLines, 100);
+            setTimeout(() => {
+                try {
+                    positionLines();
+                } catch (error) {
+                    console.warn('Error repositioning lines on resize:', error);
+                }
+            }, 100);
         });
     }
     
