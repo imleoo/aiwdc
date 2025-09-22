@@ -40,7 +40,7 @@ layout: default
     </div>
 </section>
 
-<!-- All Articles -->
+<!-- All Resources -->
 <section class="all-articles">
     <div class="container">
         <div class="articles-header">
@@ -54,16 +54,18 @@ layout: default
         </div>
 
         <div class="articles-list">
-            {% for article in site.articles %}
-            <article class="article-item" data-category="{{ article.category | downcase }}">
+            <!-- Display both articles and resources -->
+            {% assign all_resources = site.articles | concat: site.resources | sort: 'date' | reverse %}
+            {% for item in all_resources %}
+            <article class="article-item" data-category="{{ item.category | downcase }}">
                 <div class="article-item-content">
                     <div class="article-meta">
-                        <span class="article-category">{{ article.category }}</span>
-                        <span class="article-date">{{ article.date | date: "%b %d, %Y" }}</span>
+                        <span class="article-category">{{ item.category }}</span>
+                        <span class="article-date">{{ item.date | date: "%b %d, %Y" }}</span>
                     </div>
-                    <h3><a href="{{ article.url | relative_url }}">{{ article.title }}</a></h3>
-                    <p>{{ article.description }}</p>
-                    <span class="read-time">{{ article.read_time }} min read</span>
+                    <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
+                    <p>{{ item.description }}</p>
+                    <span class="read-time">{{ item.read_time }} min read</span>
                 </div>
             </article>
             {% endfor %}
