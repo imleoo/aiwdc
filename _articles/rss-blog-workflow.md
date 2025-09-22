@@ -5,7 +5,9 @@ category: Tutorials
 date: 2024-12-03
 description: "Step-by-step tutorial for creating an automated RSS feed to blog post workflow."
 read_time: 14
-image: "https://images.unsplash.com/photo-1536244636800-a3f74db0f3cf?w=800&h=400&fit=crop"
+image: "https://maas-log-prod.cn-wlcb.ufileos.com/anthropic/0387fa09-fd0c-482a-9a55-40631b2ee6d8/b893dce3040f24caedd7b7e521408a6e.png?UCloudPublicKey=TOKEN_e15ba47a-d098-4fbd-9afc-a0dcf0e4e621&Expires=1758558646&Signature=7m+39f+WNlrp3OSuW8jFNAPczSI="
+twitter:
+  card: summary_large_image
 ---
 
 # Building Your First RSS to Blog Workflow

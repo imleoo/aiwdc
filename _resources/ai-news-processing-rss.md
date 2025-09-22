@@ -6,7 +6,9 @@ featured: true
 date: 2024-12-22
 description: "Learn how to transform RSS feeds into AI-generated news summaries and detailed analyses, then publish to your own website and WeChat Official Account."
 read_time: 12
-image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&h=400&fit=crop"
+image: "https://maas-log-prod.cn-wlcb.ufileos.com/anthropic/0387fa09-fd0c-482a-9a55-40631b2ee6d8/b893dce3040f24caedd7b7e521408a6e.png?UCloudPublicKey=TOKEN_e15ba47a-d098-4fbd-9afc-a0dcf0e4e621&Expires=1758558646&Signature=7m+39f+WNlrp3OSuW8jFNAPczSI="
+twitter:
+  card: summary_large_image
 ---
 
 # AI-Powered News Processing with RSS Feeds
