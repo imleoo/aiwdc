@@ -17,8 +17,8 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Generate high-quality content with OpenAI, Claude, Qwen, and self-hosted AI models. Fine-grained control over tone, style, and formatting." />
 <meta property="og:description" content="Generate high-quality content with OpenAI, Claude, Qwen, and self-hosted AI models. Fine-grained control over tone, style, and formatting." />
-<link rel="canonical" href="https://aiwdc.com/middleware/" />
-<meta property="og:url" content="https://aiwdc.com/middleware/" />
+<link rel="canonical" href="http://localhost:4000/middleware/" />
+<meta property="og:url" content="http://localhost:4000/middleware/" />
 <meta property="og:site_name" content="AiWDC - The Open AI Content Pipeline" />
 <meta property="og:image" content="https://maas-log-prod.cn-wlcb.ufileos.com/anthropic/0387fa09-fd0c-482a-9a55-40631b2ee6d8/b893dce3040f24caedd7b7e521408a6e.png?UCloudPublicKey=TOKEN_e15ba47a-d098-4fbd-9afc-a0dcf0e4e621&Expires=1758558646&Signature=7m+39f+WNlrp3OSuW8jFNAPczSI=" />
 <meta property="og:type" content="website" />
@@ -28,23 +28,23 @@
 <meta name="twitter:site" content="@AiWDC" />
 <meta name="twitter:creator" content="@AiWDC" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"AiWDC"},"description":"Generate high-quality content with OpenAI, Claude, Qwen, and self-hosted AI models. Fine-grained control over tone, style, and formatting.","headline":"AI Content Processing - AiWDC","image":"https://maas-log-prod.cn-wlcb.ufileos.com/anthropic/0387fa09-fd0c-482a-9a55-40631b2ee6d8/b893dce3040f24caedd7b7e521408a6e.png?UCloudPublicKey=TOKEN_e15ba47a-d098-4fbd-9afc-a0dcf0e4e621&Expires=1758558646&Signature=7m+39f+WNlrp3OSuW8jFNAPczSI=","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://aiwdc.com/assets/images/logo.svg"},"name":"AiWDC"},"url":"https://aiwdc.com/middleware/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"AiWDC"},"description":"Generate high-quality content with OpenAI, Claude, Qwen, and self-hosted AI models. Fine-grained control over tone, style, and formatting.","headline":"AI Content Processing - AiWDC","image":"https://maas-log-prod.cn-wlcb.ufileos.com/anthropic/0387fa09-fd0c-482a-9a55-40631b2ee6d8/b893dce3040f24caedd7b7e521408a6e.png?UCloudPublicKey=TOKEN_e15ba47a-d098-4fbd-9afc-a0dcf0e4e621&Expires=1758558646&Signature=7m+39f+WNlrp3OSuW8jFNAPczSI=","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.svg"},"name":"AiWDC"},"url":"http://localhost:4000/middleware/"}</script>
 <!-- End Jekyll SEO tag -->
 
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-50PGBTRWFQ"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-50PGBTRWFQ');
+  gtag('config', 'G-XXXXXXXXXX');
 </script>
 
 <!-- Google Analytics 4 -->
 <script>
   // Enhanced measurement configuration
-  gtag('config', 'G-50PGBTRWFQ', {
+  gtag('config', 'G-XXXXXXXXXX', {
     'custom_map': {
       'dimension1': 'content_category',
       'dimension2': 'reading_time',
@@ -846,6 +846,303 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('AI Content Processing page loaded');
 });
 </script>
+
+    <!-- Visitor Counter -->
+    
+    <!-- Visitor Counter -->
+<div class="visitor-counter">
+    <div class="counter-item">
+        <span class="counter-icon">👁️</span>
+        <span class="counter-label">Page Views:</span>
+        <span id="page-views" class="counter-number">Loading...</span>
+    </div>
+    <div class="counter-item">
+        <span class="counter-icon">👥</span>
+        <span class="counter-label">Visitors:</span>
+        <span id="unique-visitors" class="counter-number">Loading...</span>
+    </div>
+    <div class="counter-item">
+        <span class="counter-icon">📅</span>
+        <span class="counter-label">Last Visit:</span>
+        <span id="last-visit" class="counter-date">Never</span>
+    </div>
+</div>
+
+<style>
+.visitor-counter {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin: 30px auto;
+    font-family: var(--font-sans);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    justify-content: center;
+}
+
+.counter-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.counter-icon {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.counter-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.counter-number {
+    color: var(--connection-color);
+    font-weight: 700;
+    font-size: 14px;
+    font-family: var(--font-mono);
+    min-width: 60px;
+    text-align: center;
+    background: rgba(99, 102, 241, 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.counter-date {
+    color: var(--text-secondary);
+    font-size: 10px;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .visitor-counter {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        margin: 20px 0;
+    }
+
+    .counter-item {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .counter-number {
+        font-size: 14px;
+        min-width: 50px;
+        padding: 3px 6px;
+    }
+}
+</style>
+
+<script>
+// Visitor Counter Implementation
+class VisitorCounter {
+    constructor() {
+        this.config = {
+            // Enable/disable API tracking
+            useApi: true,
+
+            // API endpoints (you can use free services like countapi.xyz)
+            apiEndpoints: {
+                pageViews: 'https://api.countapi.xyz/hit/aiwdc.com/pageviews',
+                uniqueVisitors: 'https://api.countapi.xyz/hit/aiwdc.com/visitors'
+            },
+
+            // Local storage keys
+            storageKeys: {
+                pageViews: 'aiwdc_page_views',
+                uniqueVisitors: 'aiwdc_unique_visitors',
+                lastVisit: 'aiwdc_last_visit',
+                visitorId: 'aiwdc_visitor_id'
+            },
+
+            // Display formatting
+            dateFormat: {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            }
+        };
+
+        this.init();
+    }
+
+    async init() {
+        // Generate or get visitor ID
+        this.visitorId = this.getVisitorId();
+
+        // Track page view
+        await this.trackPageView();
+
+        // Update displays
+        this.updateDisplays();
+
+        // Save visit time
+        this.saveVisitTime();
+    }
+
+    getVisitorId() {
+        let visitorId = localStorage.getItem(this.config.storageKeys.visitorId);
+        if (!visitorId) {
+            visitorId = this.generateVisitorId();
+            localStorage.setItem(this.config.storageKeys.visitorId, visitorId);
+        }
+        return visitorId;
+    }
+
+    generateVisitorId() {
+        return 'visitor_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+    }
+
+    async trackPageView() {
+        // Update local storage
+        const currentViews = parseInt(localStorage.getItem(this.config.storageKeys.pageViews) || '0');
+        const newViews = currentViews + 1;
+        localStorage.setItem(this.config.storageKeys.pageViews, newViews.toString());
+
+        // Track unique visitor (first visit today)
+        const lastVisit = localStorage.getItem(this.config.storageKeys.lastVisit);
+        const today = new Date().toDateString();
+        const isFirstVisitToday = !lastVisit || new Date(lastVisit).toDateString() !== today;
+
+        if (isFirstVisitToday) {
+            const currentVisitors = parseInt(localStorage.getItem(this.config.storageKeys.uniqueVisitors) || '0');
+            const newVisitors = currentVisitors + 1;
+            localStorage.setItem(this.config.storageKeys.uniqueVisitors, newVisitors.toString());
+        }
+
+        // If API is enabled, try to update external counters
+        if (this.config.useApi) {
+            try {
+                await this.updateApiCounters(isFirstVisitToday);
+            } catch (error) {
+                console.log('API counter update failed:', error);
+            }
+        }
+    }
+
+    async updateApiCounters(isUniqueVisitor) {
+        // Update page views counter
+        try {
+            const pageViewResponse = await fetch(this.config.apiEndpoints.pageViews, {
+                method: 'POST',
+                mode: 'no-cors'
+            });
+            console.log('Page view tracked via API');
+        } catch (error) {
+            console.log('Page view API tracking failed:', error);
+        }
+
+        // Update unique visitors counter if this is a unique visit
+        if (isUniqueVisitor) {
+            try {
+                const visitorResponse = await fetch(this.config.apiEndpoints.uniqueVisitors, {
+                    method: 'POST',
+                    mode: 'no-cors'
+                });
+                console.log('Unique visitor tracked via API');
+            } catch (error) {
+                console.log('Unique visitor API tracking failed:', error);
+            }
+        }
+    }
+
+    updateDisplays() {
+        // Update page views
+        const pageViews = localStorage.getItem(this.config.storageKeys.pageViews) || '0';
+        const pageViewsElement = document.getElementById('page-views');
+        if (pageViewsElement) {
+            pageViewsElement.textContent = this.formatNumber(parseInt(pageViews));
+        }
+
+        // Update unique visitors
+        const uniqueVisitors = localStorage.getItem(this.config.storageKeys.uniqueVisitors) || '0';
+        const uniqueVisitorsElement = document.getElementById('unique-visitors');
+        if (uniqueVisitorsElement) {
+            uniqueVisitorsElement.textContent = this.formatNumber(parseInt(uniqueVisitors));
+        }
+
+        // Update last visit
+        const lastVisit = localStorage.getItem(this.config.storageKeys.lastVisit);
+        const lastVisitElement = document.getElementById('last-visit');
+        if (lastVisitElement) {
+            if (lastVisit) {
+                const visitDate = new Date(lastVisit);
+                lastVisitElement.textContent = visitDate.toLocaleDateString('en-US', this.config.dateFormat);
+            } else {
+                lastVisitElement.textContent = 'First visit';
+            }
+        }
+    }
+
+    saveVisitTime() {
+        localStorage.setItem(this.config.storageKeys.lastVisit, new Date().toISOString());
+    }
+
+    formatNumber(num) {
+        if (num >= 1000000) {
+            return (num / 1000000).toFixed(1) + 'M';
+        } else if (num >= 1000) {
+            return (num / 1000).toFixed(1) + 'K';
+        }
+        return num.toString();
+    }
+
+    // Method to get statistics
+    getStats() {
+        return {
+            pageViews: parseInt(localStorage.getItem(this.config.storageKeys.pageViews) || '0'),
+            uniqueVisitors: parseInt(localStorage.getItem(this.config.storageKeys.uniqueVisitors) || '0'),
+            lastVisit: localStorage.getItem(this.config.storageKeys.lastVisit),
+            visitorId: this.visitorId
+        };
+    }
+
+    // Method to reset statistics (for development)
+    resetStats() {
+        Object.values(this.config.storageKeys).forEach(key => {
+            localStorage.removeItem(key);
+        });
+        this.init();
+    }
+}
+
+// Initialize visitor counter when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    window.visitorCounter = new VisitorCounter();
+
+    // Make reset function available globally (for development)
+    window.resetVisitorCounter = function() {
+        if (confirm('Are you sure you want to reset visitor statistics?')) {
+            window.visitorCounter.resetStats();
+        }
+    };
+
+    // Log stats for debugging
+    console.log('Visitor Counter initialized');
+    console.log('Current stats:', window.visitorCounter.getStats());
+});
+
+// Export for module usage
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = VisitorCounter;
+}
+</script>
+    
 
     <footer class="footer">
         <div class="container">

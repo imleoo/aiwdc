@@ -3,7 +3,7 @@ layout: article
 title: "AI-Powered News Processing with RSS Feeds"
 category: Tutorials
 featured: true
-date: 2024-12-22
+date: 2025-09-21
 description: "Learn how to transform RSS feeds into AI-generated news summaries and detailed analyses, then publish to your own website and WeChat Official Account."
 read_time: 12
 image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"

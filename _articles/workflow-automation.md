@@ -3,7 +3,7 @@ layout: article
 title: "Advanced Workflow Automation Strategies"
 category: Templates
 featured: true
-date: 2024-12-10
+date: 2025-09-23
 description: "Master advanced automation techniques to scale your content production. Learn about conditional logic, multi-step workflows, and error handling."
 read_time: 15
 image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"

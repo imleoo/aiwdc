@@ -50,6 +50,11 @@
 
     {{ content }}
 
+    <!-- Visitor Counter -->
+    {% if page.show_visitor_counter != false %}
+    {% include visitor-counter.html %}
+    {% endif %}
+
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
