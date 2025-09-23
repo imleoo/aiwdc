@@ -1,5 +1,5 @@
 # Site settings
-title: AiWDC - The Open AI Content Pipeline
+title: AiWDC Content Automation Platform
 description: Connect your data, transform with AI, and publish everywhere. Automated content creation platform with multiple AI models.
 url: "https://aiwdc.com" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog
