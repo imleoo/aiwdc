@@ -1086,10 +1086,12 @@ class VisitorCounter {
             // Enable/disable API tracking
             useApi: true,
 
-            // API endpoints (you can use free services like countapi.xyz)
-            apiEndpoints: {
-                pageViews: 'https://api.countapi.xyz/hit/aiwdc.com/pageviews',
-                uniqueVisitors: 'https://api.countapi.xyz/hit/aiwdc.com/visitors'
+            // Counter.dev configuration
+            counterDev: {
+                enabled: true,
+                scriptUrl: 'https://cdn.counter.dev/script.js',
+                id: 'be9d5b6f-bf5b-4ac5-900c-414f31639aa0',
+                utcoffset: '8'
             },
 
             // Local storage keys
@@ -1117,6 +1119,9 @@ class VisitorCounter {
         // Generate or get visitor ID
         this.visitorId = this.getVisitorId();
 
+        // Initialize Counter.dev
+        this.initializeCounterDev();
+
         // Track page view
         await this.trackPageView();
 
@@ -1138,6 +1143,22 @@ class VisitorCounter {
 
     generateVisitorId() {
         return 'visitor_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+    }
+
+  initializeCounterDev() {
+        if (this.config.counterDev.enabled) {
+            // Create Counter.dev script element
+            const script = document.createElement('script');
+            script.src = this.config.counterDev.scriptUrl;
+            script.setAttribute('data-id', this.config.counterDev.id);
+            script.setAttribute('data-utcoffset', this.config.counterDev.utcoffset);
+            script.async = true;
+
+            // Add script to head
+            document.head.appendChild(script);
+
+            console.log('Counter.dev initialized with ID:', this.config.counterDev.id);
+        }
     }
 
     async trackPageView() {
@@ -1168,27 +1189,57 @@ class VisitorCounter {
     }
 
     async updateApiCounters(isUniqueVisitor) {
-        // Update page views counter
-        try {
-            const pageViewResponse = await fetch(this.config.apiEndpoints.pageViews, {
-                method: 'POST',
-                mode: 'no-cors'
-            });
-            console.log('Page view tracked via API');
-        } catch (error) {
-            console.log('Page view API tracking failed:', error);
-        }
+        // Counter.dev is already initialized via script tag
+        // No need for manual API calls as Counter.dev handles tracking automatically
 
-        // Update unique visitors counter if this is a unique visit
-        if (isUniqueVisitor) {
-            try {
-                const visitorResponse = await fetch(this.config.apiEndpoints.uniqueVisitors, {
-                    method: 'POST',
-                    mode: 'no-cors'
+        // Google Analytics event tracking
+        this.trackWithGoogleAnalytics(isUniqueVisitor);
+
+        console.log('Counter.dev tracking active');
+        console.log('Unique visit:', isUniqueVisitor);
+    }
+
+    async trackWithFirebase(isUniqueVisitor) {
+        // Optional: Firebase Realtime Database integration
+        // You'll need to set up Firebase and add the config
+        try {
+            const firebaseData = {
+                timestamp: new Date().toISOString(),
+                page: window.location.pathname,
+                userAgent: navigator.userAgent,
+                visitorId: this.visitorId,
+                isUniqueVisitor: isUniqueVisitor
+            };
+
+            // Replace with your Firebase database URL
+            const firebaseUrl = 'https://your-project-default-rtdb.firebaseio.com/visitors.json';
+
+            // Uncomment and configure Firebase to use this
+            // await fetch(firebaseUrl, {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(firebaseData)
+            // });
+        } catch (error) {
+            console.log('Firebase tracking not configured');
+        }
+    }
+
+    trackWithGoogleAnalytics(isUniqueVisitor) {
+        // Track visitor counter events with Google Analytics
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_view_counter', {
+                'event_category': 'visitor_stats',
+                'event_label': 'Page View',
+                'value': 1
+            });
+
+            if (isUniqueVisitor) {
+                gtag('event', 'unique_visitor_counter', {
+                    'event_category': 'visitor_stats',
+                    'event_label': 'Unique Visitor',
+                    'value': 1
                 });
-                console.log('Unique visitor tracked via API');
-            } catch (error) {
-                console.log('Unique visitor API tracking failed:', error);
             }
         }
     }
