@@ -12,6 +12,9 @@ bundle install
 # Start development server with live reload
 bundle exec jekyll serve --livereload
 
+# Start development server (basic)
+bundle exec jekyll serve
+
 # Build for production
 bundle exec jekyll build
 
@@ -19,13 +22,16 @@ bundle exec jekyll build
 bundle exec jekyll clean
 ```
 
-### Testing
+### Testing and Validation
 ```bash
-# Run locally (no test framework specified)
+# Primary testing method - run local development server
 bundle exec jekyll serve
 
-# Check links (if jekyll-linkcheck is available)
+# Check site health and validate configuration
 bundle exec jekyll doctor
+
+# Validate generated site structure
+ls -la _site/
 ```
 
 ## Architecture Overview
@@ -64,7 +70,7 @@ This is a Jekyll 4.3 static site for AiWDC.com - an AI content automation platfo
 ### Notable Technical Details
 - **Connection Diagram**: Dynamic positioning with `getBoundingClientRect()`, animated data particles
 - **Pricing Toggle**: Accessible form controls with proper ARIA labeling
-- **Visitor Counter**: LocalStorage-based tracking with Counter.dev integration
+- **Visitor Counter**: Custom JavaScript implementation with LocalStorage fallback, privacy-friendly tracking with external API support
 - **Mobile Responsive**: Hamburger menu, touch-friendly interactions
 
 ### File Organization Patterns
@@ -86,8 +92,25 @@ This is a Jekyll 4.3 static site for AiWDC.com - an AI content automation platfo
 - Analytics IDs and site URLs managed in config
 
 ## Important Notes
-- No build step required for CSS/JS (edited directly)
-- All interactive elements have proper error handling
-- Accessibility fixes implemented (ARIA labels, form associations)
-- Test both mobile and desktop breakpoints
-- Monitor console for safe query warnings in development
+- No build step required for CSS/JS (edited directly in `assets/` directory)
+- All interactive elements have proper error handling and safe DOM querying
+- Accessibility features implemented (ARIA labels, form associations, keyboard navigation)
+- Test both mobile and desktop breakpoints when making UI changes
+- Monitor browser console for safe query warnings during development
+- GitHub Actions automatically deploys on push to main branch
+- Site uses Google Analytics (G-50PGBTRWFQ) and custom visitor tracking
+- All JavaScript uses vanilla JS with error handling - avoid external dependencies
+
+## Content Management Patterns
+- Articles use front matter: `title`, `category`, `featured`, `date`, `description`, `read_time`, `image`
+- Resources organized by categories: Documentation, Tutorials, Templates, Blog
+- Use existing layout templates: `default.html`, `article.html`, `resource.html`
+- Images stored in `assets/images/` - reference with `/assets/images/filename`
+- Site navigation managed in `_config.yml` under `navigation` section
+
+## Development Workflow
+1. Make changes to source files (Markdown, HTML, CSS, JS)
+2. Test locally with `bundle exec jekyll serve --livereload`
+3. Verify responsive design on mobile and desktop
+4. Check browser console for errors
+5. Commit to main branch for automatic GitHub Pages deployment

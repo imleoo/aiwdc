@@ -25,19 +25,23 @@ bundle exec jekyll doctor
 ### Testing
 ```bash
 # Run local development server (primary testing method)
-bundle exec jekyll serve
+bundle exec jekyll serve --livereload
 
 # Check for broken links and site issues
 bundle exec jekyll doctor
+
+# Create new content (requires jekyll-compose plugin)
+bundle exec jekyll draft "My New Post"
+bundle exec jekyll post "My New Post"
 ```
 
 ## Architecture Overview
 
-This is a Jekyll 4.3 static site for AiWDC.com - an AI content automation platform marketing website. The architecture follows Jekyll conventions with some key customizations:
+This is a Jekyll 4.3 static site for AiWDC.com - an open AI content automation platform. The architecture follows Jekyll conventions with advanced interactive features and automated deployment via GitHub Actions.
 
 ### Core Structure
 - **Jekyll Static Site Generator**: Ruby-based SSG with Liquid templating
-- **GitHub Pages Hosting**: Automated deployment via GitHub Actions
+- **GitHub Pages Hosting**: Automated deployment via GitHub Actions (`.github/workflows/jekyll.yml`)
 - **Collections-based Content**: Two main collections - `articles` and `resources`
 - **Responsive Design**: Mobile-first CSS with custom styling
 
@@ -52,6 +56,16 @@ This is a Jekyll 4.3 static site for AiWDC.com - an AI content automation platfo
 - **default.html**: Base template with navigation, footer, analytics integration
 - **article.html**: Template for blog articles with metadata display
 - **resource.html**: Template for documentation and resources
+
+### 3. Content Collections
+- **Articles** (`_articles/`): Blog posts and guides with front matter (category, featured, date, read_time)
+- **Resources** (`_resources/`): Documentation and tutorials organized by category
+
+### 4. Additional Pages
+- **connectors.html**: Data source connectors documentation
+- **middleware.html**: AI processing middleware information
+- **publishing.html**: Publishing destinations and integrations
+- **login.html** & **register.html**: Authentication pages
 
 #### 3. Content Collections
 - **Articles** (`_articles/`): Blog posts and guides with front matter (category, featured, date, read_time)
@@ -85,7 +99,13 @@ This is a Jekyll 4.3 static site for AiWDC.com - an AI content automation platfo
 1. **Source Processing**: Markdown files + Liquid templates → HTML
 2. **Asset Pipeline**: CSS/JS files copied to `_site/`
 3. **Jekyll Build**: Generates static site in `_site/` directory
-4. **GitHub Actions**: Automated deployment to GitHub Pages on push to main
+4. **GitHub Actions**: Automated deployment via `.github/workflows/jekyll.yml` on push to main
+
+### CI/CD Pipeline
+- **Auto-deploy**: Push to main branch triggers deployment
+- **Build Environment**: Ubuntu latest with Jekyll build actions
+- **Artifact Upload**: Built site uploaded as artifact
+- **Pages Deployment**: Automatic deployment to GitHub Pages environment
 
 ### Configuration Files
 - **_config.yml**: Main Jekyll settings, collections, navigation, SEO metadata
@@ -121,7 +141,7 @@ This is a Jekyll 4.3 static site for AiWDC.com - an AI content automation platfo
 ├── index.html               # Homepage with interactive elements
 ├── login.html               # Authentication pages
 ├── register.html
-└── .github/workflows/       # CI/CD (if present)
+└── .github/workflows/       # CI/CD configuration (jekyll.yml)
 ```
 
 ### Content Workflow
