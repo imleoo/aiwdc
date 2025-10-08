@@ -9,7 +9,10 @@ import {
   IconUser,
   IconExit,
   IconFile,
-  IconBell
+  IconBell,
+  IconKey,
+  IconClock,
+  IconWallet
 } from '@douyinfe/semi-icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
@@ -37,46 +40,27 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const menuItems = [
     {
       itemKey: '/dashboard',
-      text: '概览',
+      text: '数据看板',
       icon: <IconHome />,
     },
     {
-      itemKey: 'content',
-      text: '内容管理',
-      icon: <IconFile />,
-      items: [
-        {
-          itemKey: '/articles',
-          text: '文章管理',
-          icon: <IconEdit />,
-        },
-        {
-          itemKey: '/publishing',
-          text: '发布管理',
-          icon: <IconSend />,
-        },
-      ],
+      itemKey: '/api-tokens',
+      text: 'API令牌',
+      icon: <IconKey />,
     },
     {
-      itemKey: 'social',
-      text: '社交管理',
-      icon: <IconSend />,
-      items: [
-        {
-          itemKey: '/social',
-          text: '社交媒体',
-          icon: <IconSend />,
-        },
-      ],
+      itemKey: '/usage-logs',
+      text: '使用日志',
+      icon: <IconClock />,
     },
     {
-      itemKey: '/analytics',
-      text: '数据分析',
-      icon: <IconHistogram />,
+      itemKey: '/wallet',
+      text: '钱包',
+      icon: <IconWallet />,
     },
     {
       itemKey: '/settings',
-      text: '系统设置',
+      text: '个人设置',
       icon: <IconSetting />,
     },
   ];
@@ -121,15 +105,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           {!collapsed ? (
             <div>
               <Title heading={4} style={{ margin: 0, color: 'var(--semi-color-primary)' }}>
-                AiWDC
+                Any Router
               </Title>
               <div style={{ fontSize: '12px', color: 'var(--semi-color-text-2)', marginTop: '4px' }}>
-                AI内容自动化平台
+                路由管理平台
               </div>
             </div>
           ) : (
             <Title heading={4} style={{ margin: 0, color: 'var(--semi-color-primary)' }}>
-              AiWDC
+              Any Router
             </Title>
           )}
         </div>
@@ -221,11 +205,21 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           padding: '0 24px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'flex-end',
+          justifyContent: 'space-between',
           height: '64px',
         }}>
+          {/* 顶部导航菜单 */}
           <Space>
+            <span style={{ color: 'var(--semi-color-text-0)', cursor: 'pointer' }}>首页</span>
+            <span style={{ color: 'var(--semi-color-text-0)', cursor: 'pointer' }}>控制台</span>
+            <span style={{ color: 'var(--semi-color-text-0)', cursor: 'pointer' }}>活动</span>
+          </Space>
+
+          {/* 右侧用户操作区 */}
+          <Space>
+            <span style={{ color: 'var(--semi-color-text-2)', fontSize: '14px' }}>使用指南</span>
             <IconBell style={{ fontSize: '18px', color: 'var(--semi-color-text-2)', cursor: 'pointer' }} />
+            <span style={{ color: 'var(--semi-color-text-2)', fontSize: '14px' }}>github.8521</span>
           </Space>
         </Header>
 
