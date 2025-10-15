@@ -21,6 +21,25 @@ $RECYCLE.BIN/
 # Linux
 *~
 
+# IDE and Editors
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+*.iml
+*.iws
+*.ipr
+.settings/
+.vs/
+*.swp
+*.swo
+*~.nib
+local.properties
+.loadpath
+.recommenders
+
 # Node.js
 node_modules/
 npm-debug.log*
@@ -48,6 +67,25 @@ coverage/
 
 # nyc test coverage
 .nyc_output
+
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+.bundle/
+
+# Build and temp files
+dist/
+build/
+tmp/
+temp/
+.tmp/
+*.tmp
+*.bak
+*.swp
+*.orig
 
 # Dependency directories
 jspm_packages/
