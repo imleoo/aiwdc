@@ -548,4 +548,4 @@ After setting up your AI-powered news processing system:
 
 **Ready to transform your news processing with AI?** Start your free trial today and join thousands of content creators who are revolutionizing their news workflows with AiWDC.
 
-[Start Free Trial](https://aiwdc.com/signup) | [View Documentation](https://aiwdc.com/docs) | [Join Community](https://discord.gg/aiwdc)
+[Start Free Trial](/register) | [View Documentation](/resources) | [Join Community](https://discord.gg/aiwdc)
