@@ -7,6 +7,10 @@
 ehthumbs.db
 Thumbs.db
 
+# Project specific
+.claude/
+.windsurfrules
+
 # Windows
 Thumbs.db
 ehthumbs.db
@@ -70,6 +74,7 @@ coverage/
 
 # Jekyll
 _site/
+_site_test/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
