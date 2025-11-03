@@ -246,14 +246,15 @@
 </script>
 
 <!-- Plausible Analytics (privacy-focused alternative) -->
-<script defer data-domain="yourdomain.com" src="https://plausible.io/js/plausible.js"></script>
+<script defer data-domain="aiwdc.com" src="https://plausible.io/js/plausible.js"></script>
 
 <!-- Simple hit counter (optional) -->
 <script>
   function updateHitCounter() {
     // This is a simple implementation
     // In production, you'd want to use a proper backend service
-    const counterUrl = 'https://api.countapi.xyz/hit/yourdomain.com/visits';
+    // Disabled: third-party count API can be unreliable; prefer GitHub Insights or GA
+    const counterUrl = 'https://api.countapi.xyz/hit/aiwdc.com/visits';
 
     fetch(counterUrl)
       .then(response => response.json())
@@ -271,6 +272,6 @@
       });
   }
 
-  // Uncomment to enable hit counter
+  // Keep disabled to avoid third-party dependency
   // updateHitCounter();
 </script>

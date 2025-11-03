@@ -30,7 +30,7 @@
 
     <!-- Connectors Section -->
     <url>
-        <loc>https://aiwdc.com/#connectors</loc>
+        <loc>https://aiwdc.com/connectors/</loc>
         <lastmod>2024-09-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -38,7 +38,7 @@
 
     <!-- AI Models Section -->
     <url>
-        <loc>https://aiwdc.com/#middleware</loc>
+        <loc>https://aiwdc.com/middleware/</loc>
         <lastmod>2024-09-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -46,7 +46,7 @@
 
     <!-- Publishing Section -->
     <url>
-        <loc>https://aiwdc.com/#publishing</loc>
+        <loc>https://aiwdc.com/publishing/</loc>
         <lastmod>2024-09-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
