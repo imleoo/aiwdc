@@ -210,8 +210,8 @@ permalink: /
                 </div>
 
                 <div class="pricing-footer">
-                    <a href="{{ '/register/' | relative_url }}" class="btn btn-primary pricing-btn" id="pricing-btn">
-                        Start Monthly Subscription
+                    <a href="http://localhost:5176/TailAdmin/signin" class="btn btn-primary pricing-btn" id="pricing-btn">
+                        Sign In to Get Started
                     </a>
                     <p class="pricing-guarantee">No setup fees • Cancel anytime • 30-day money-back guarantee</p>
                 </div>
@@ -316,12 +316,226 @@ permalink: /
 </section>
 
 <script>
-// Initialize any page-specific JavaScript here
+// Payment API Client
+class PaymentAPI {
+    constructor() {
+        this.baseURL = 'http://localhost:8080/api/v1';
+        this.token = localStorage.getItem('token'); // Use same token as admin
+    }
+
+    async request(endpoint, options = {}) {
+        const url = `${this.baseURL}${endpoint}`;
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                ...(this.token && { Authorization: `Bearer ${this.token}` }),
+                ...options.headers
+            },
+            ...options
+        };
+
+        const response = await fetch(url, config);
+
+        // Handle 401 Unauthorized - token expired or invalid
+        if (response.status === 401 && !endpoint.includes('/auth/')) {
+            localStorage.removeItem('token');
+            localStorage.removeItem('userData');
+            window.location.href = 'http://localhost:5176/TailAdmin/signin';
+            return;
+        }
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'API request failed');
+        }
+
+        return response.json();
+    }
+
+    async createCheckoutSession(pricingPlanId) {
+        return this.request('/payments/checkout-sessions', {
+            method: 'POST',
+            body: JSON.stringify({
+                user_id: this.getCurrentUserId(),
+                pricing_plan_id: pricingPlanId,
+                success_url: `${window.location.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+                cancel_url: `${window.location.origin}/pricing?canceled=true`,
+                trial_period_days: 14
+            })
+        });
+    }
+
+    async getSubscription(userId) {
+        return this.request(`/payments/subscriptions/${userId}`);
+    }
+
+    async cancelSubscription(subscriptionId, immediate = false) {
+        return this.request(`/payments/subscriptions/${subscriptionId}`, {
+            method: 'DELETE',
+            body: JSON.stringify({
+                immediate: immediate,
+                cancel_at_period_end: !immediate
+            })
+        });
+    }
+
+    getCurrentUserId() {
+        // 从admin的localStorage获取用户ID
+        const userData = localStorage.getItem('userData');
+        if (userData) {
+            const user = JSON.parse(userData);
+            return parseInt(user.id) || 1;
+        }
+        // Fallback: parse from JWT token if available
+        const token = localStorage.getItem('token');
+        if (token) {
+            try {
+                const payload = JSON.parse(atob(token.split('.')[1]));
+                return parseInt(payload.sub) || 1;
+            } catch (e) {
+                console.warn('Failed to parse user ID from token');
+            }
+        }
+        return null;
+    }
+
+    isAuthenticated() {
+        return !!this.token;
+    }
+}
+
+// Initialize payment functionality
+const paymentAPI = new PaymentAPI();
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize connection diagram if it exists on this page
     if (document.querySelector('.connection-diagram')) {
-        // Connection diagram initialization code can be added here
         console.log('Connection diagram initialized');
     }
+
+    // Initialize payment buttons
+    initializePaymentButtons();
+
+    // Check user authentication status
+    checkAuthenticationStatus();
+});
+
+function initializePaymentButtons() {
+    const pricingBtn = document.getElementById('pricing-btn');
+    if (pricingBtn) {
+        pricingBtn.addEventListener('click', handleSubscriptionClick);
+    }
+}
+
+async function handleSubscriptionClick(event) {
+    event.preventDefault();
+
+    // Check if user is authenticated
+    if (!paymentAPI.isAuthenticated()) {
+        // Redirect to admin login page
+        window.location.href = 'http://localhost:5173/TailAdmin/signin';
+        return;
+    }
+
+    try {
+        // Show loading state
+        const button = event.target;
+        const originalText = button.textContent;
+        button.textContent = 'Processing...';
+        button.disabled = true;
+
+        // For authenticated users, we could either:
+        // 1. Create Stripe checkout session directly
+        // 2. Or redirect to admin subscription page for better UX
+
+        // Option 2: Redirect to admin subscription page for better UX
+        window.location.href = 'http://localhost:5173/TailAdmin/subscription';
+
+    } catch (error) {
+        console.error('Payment error:', error);
+        alert('Payment initialization failed. Please try again.');
+
+        // Restore button state
+        const button = event.target;
+        button.textContent = originalText;
+        button.disabled = false;
+    }
+}
+
+function checkAuthenticationStatus() {
+    if (paymentAPI.isAuthenticated()) {
+        // User is logged in, update UI
+        updateUIForAuthenticatedUser();
+    } else {
+        // User is not logged in, update UI
+        updateUIForUnauthenticatedUser();
+    }
+}
+
+function updateUIForAuthenticatedUser() {
+    // Update pricing button text
+    const pricingBtn = document.getElementById('pricing-btn');
+    if (pricingBtn) {
+        pricingBtn.textContent = 'Manage Subscription';
+    }
+
+    // Show user info if available
+    const userData = localStorage.getItem('userData');
+    if (userData) {
+        const user = JSON.parse(userData);
+        console.log('Authenticated user:', user);
+    }
+}
+
+function updateUIForUnauthenticatedUser() {
+    // Update pricing button text for unauthenticated users
+    const pricingBtn = document.getElementById('pricing-btn');
+    if (pricingBtn) {
+        pricingBtn.textContent = 'Sign In to Get Started';
+    }
+}
+
+// Handle success page redirect
+function handlePaymentSuccess() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('session_id');
+
+    if (sessionId) {
+        // Payment was successful
+        console.log('Payment successful with session ID:', sessionId);
+
+        // Show success message
+        setTimeout(() => {
+            alert('Payment successful! Welcome to AiWDC Cloud.');
+        }, 1000);
+
+        // Clean URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+}
+
+// Handle canceled payment
+function handlePaymentCanceled() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const canceled = urlParams.get('canceled');
+
+    if (canceled === 'true') {
+        // Payment was canceled
+        console.log('Payment was canceled');
+
+        // Show canceled message
+        setTimeout(() => {
+            alert('Payment was canceled. You can try again anytime.');
+        }, 1000);
+
+        // Clean URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+}
+
+// Check for payment success/cancel on page load
+document.addEventListener('DOMContentLoaded', function() {
+    handlePaymentSuccess();
+    handlePaymentCanceled();
 });
 </script>
